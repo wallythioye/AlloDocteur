@@ -1,0 +1,93 @@
+/* CSS/header.css */
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: white;
+    position: fixed;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .header .nav-row .navrow .navbar .active {
+    border-top: none;
+  }
+}
+.header .logo {
+    height: 100%;
+    object-fit: contain;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.main-menu li a {
+
+    text-decoration: none;
+    color: #181717;
+}
+
+.main-menu li:last-child button {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: rgb(255, 253, 253);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu {
+        margin-top: 10px;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+    }
+
+    .main-menu li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
