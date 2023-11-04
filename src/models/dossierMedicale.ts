@@ -1,4 +1,5 @@
-import { MedecinDossier } from "./medecin-dossier";
+
+import { MedecinDossier } from "./medecinDossier";
 import { Patient } from "./patient";
 
 export interface DossierMedicale {

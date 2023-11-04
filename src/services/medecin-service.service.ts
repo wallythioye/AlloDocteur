@@ -7,7 +7,7 @@ import { ServeurService } from './serveur.service';
 @Injectable({
   providedIn: 'root'
 })
-export class MedecinServiceService {
+export class MedecinService {
   private apiUrl = 'http://localhost:8080/api/medecins';
 
   constructor(private httpClient: HttpClient, private serveurService: ServeurService) {
