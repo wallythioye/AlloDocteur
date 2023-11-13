@@ -1,25 +1,29 @@
 <menu-medecin></menu-medecin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <div class="container d-flex justify-content-center align-items-center" style="width: 600px; margin-bottom: 0.7cm;">
   <div class="form-container border border-primary rounded p-3">
     <div class="bg-success text-light p-2 rounded text-center">
       <i class="bi bi-calendar-plus"></i> Ajout Rendez-vous
     </div>
-    <form>
+    <form (ngSubmit)="ajouterRendezvous()">
       <div class="form-group">
         <label for="patient_id">Patient</label>
-        <input type="text" class="form-control" id="patient" name="patient_id" placeholder="Saisir le nom du patient" required>
+        <select class="form-control" id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouveauRendezvous.patient" required >
+          <option value="">Sélectionnez un patient</option>
+          <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
+        </select>
       </div>
-
+      
       <div class="form-group">
-        <label for="date_heure">Date et Heure</label>
-        <input type="datetime-local" class="form-control" id="date_heure" name="date_heure" required>
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" name="date" [(ngModel)]="nouveauRendezvous.date" required>
       </div>
+      
       <div class="form-group">
-        <label for="salle">Salle</label>
-        <input type="text" class="form-control" id="salle" name="salle" placeholder="Saisir le salle pour le rv" required>
+        <label for="motif">Motif</label>
+        <input type="text" class="form-control" id="motif" name="motif" [(ngModel)]="nouveauRendezvous.motif" placeholder="Saisir le motif" required>
       </div>
+      
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success m-3"><i class="bi bi-check-circle"></i> Ajouter Rendez-vous</button>
         <button type="reset" class="btn btn-danger m-3"><i class="bi bi-x-circle"></i> Annuler</button>

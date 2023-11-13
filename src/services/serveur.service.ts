@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({
-    providedIn: 'root'
-  })
-export class ServeurService{
-    public baseUrl = "http://localhost";
-    public port = "8080";
-    public apiGlobal=  "/api"
-    public getFullUrl(){
-        return this.baseUrl+":"+this.port+this.apiGlobal;
-    }
+  providedIn: 'root'
+})
+export class ServeurService {
+  private baseUrl = "http://localhost";
+  private port = "8080";
+  private apiGlobal = "/api";
+
+  public getFullUrl(): string {
+    return this.baseUrl + ":" + this.port + this.apiGlobal;
+  }
 }

@@ -1,0 +1,31 @@
+/* Style pour le conteneur */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Taille de la vue */
+}
+
+/* Style pour la bordure */
+.form-container {
+    border-radius: 15px;
+    display: flex;
+    max-width: 100%; /* Taille maximale de la largeur de la vue */
+    max-height: 100%; /* Taille maximale de la hauteur de la vue */
+    background-color: #27A042;
+}
+
+/* Style pour l'image */
+.custom-image { 
+    width: 55%;
+    object-fit: cover; /* Redimensionner l'image pour couvrir tout le conteneur */
+    border-radius: 15px 0 0 15px; /* Coins arrondis à gauche */
+}
+
+/* Style pour le formulaire */s
+.custom-form {
+    padding: 20px;
+    border-radius: 0 15px 15px 0; /* Coins arrondis à droite */
+    width: 50%;
+    height: 75%;
+}

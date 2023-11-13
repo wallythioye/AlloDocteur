@@ -8,7 +8,7 @@ import { ServeurService } from './serveur.service';
   providedIn: 'root'
 })
 export class MedecinService {
-  private apiUrl = 'http://localhost:8080/api/medecins';
+  private apiUrl = '';
 
   constructor(private httpClient: HttpClient, private serveurService: ServeurService) {
        this.apiUrl = serveurService.getFullUrl();
@@ -19,7 +19,7 @@ export class MedecinService {
   }
 
   ajouterMedecin(nouveauMedecin: Medecin): Observable<Medecin> {
-    return this.httpClient.post<Medecin>(this.apiUrl, nouveauMedecin, {
+    return this.httpClient.post<Medecin>(this.apiUrl+'/medecins', nouveauMedecin, {
       headers: { 'Content-Type': 'application/json' }
     });
   }

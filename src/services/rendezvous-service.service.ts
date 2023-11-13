@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { RendezVous } from 'src/models/rendezvous';
 import { ServeurService } from './serveur.service';
 
@@ -8,7 +8,7 @@ import { ServeurService } from './serveur.service';
   providedIn: 'root'
 })
 export class RendezvousServiceService {
-  private apiUrl = 'http://localhost:8080/api/rendezvous';
+  private apiUrl = '';
 
   constructor(private __httpClient: HttpClient, private serveurService: ServeurService) {
       this.apiUrl = serveurService.getFullUrl();
@@ -19,7 +19,7 @@ export class RendezvousServiceService {
   }
 
   ajouterRendezvous(nouveauRendezvous: RendezVous): Observable<RendezVous> {
-    return this.__httpClient.post<RendezVous>(this.apiUrl, nouveauRendezvous);
+    return this.__httpClient.post<RendezVous>(this.apiUrl+'/rendezVouss', nouveauRendezvous);
   }
 
   modifierRendezVous(rendezvousModifie: RendezVous): Observable<RendezVous> {

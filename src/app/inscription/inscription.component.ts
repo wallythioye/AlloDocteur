@@ -31,8 +31,8 @@ export class InscriptionComponent {
     this.patientService.ajouterPatient(this.utilisateur).subscribe(
       {
         next: (nouveauPatient) => {
-          this.successMessage = 'Inscription réussie pour ';
-          // Redirection ou autre traitement après l'inscription réussie
+          this.successMessage = 'Inscription réussie pour ',nouveauPatient;
+          
         },
         error: (err) => {
           this.errorMessage = 'Erreur lors de l\'inscription du patient.';

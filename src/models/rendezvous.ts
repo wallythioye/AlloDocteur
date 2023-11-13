@@ -4,8 +4,9 @@ import { Patient } from "./patient";
 export interface RendezVous {
   id: number;
   date: Date;
+  dateCreation?: Date;
   statut: string;
   patient: Patient;
   medecin: Medecin; 
-  motiif: string;
+  motif: string;
 }

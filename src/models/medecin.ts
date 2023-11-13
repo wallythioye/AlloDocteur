@@ -1,6 +1,6 @@
-import { Utilisateur } from "./utilisateur";
 import { Prescription } from "./prescription";
 import { RendezVous } from "./rendezvous";
+import { Utilisateur } from "./utilisateur";
 
 export interface Medecin extends Utilisateur{
     specialite: string;

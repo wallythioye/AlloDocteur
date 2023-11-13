@@ -1,0 +1,64 @@
+<menu-medecin></menu-medecin>
+<div class="container border border-success rounded p-3">
+    <div class="bg-success text-light p-2 rounded text-center">
+        <i class="bi bi-calendar-plus"></i> AJOUTER CONSULTATION
+      </div>
+    <form (ngSubmit)="ajoutConsultation()">
+    <div class="row">
+      <div class="col">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" [(ngModel)]="nouvelleConsultation.date" name="date">
+      </div>
+      <div class="col">
+        <label for="poids">Poids:</label>
+        <input type="number" class="form-control" id="poids" [(ngModel)]="nouvelleConsultation.poids" name="poids">
+      </div>
+      
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label for="patient">Patient:</label>
+        <input type="text" class="form-control" id="patient" [(ngModel)]="nouvelleConsultation.patient.nom" name="patient">
+      </div>
+      <div class="col">
+        <label for="taille">Taille:</label>
+        <input type="number" class="form-control" id="taille" [(ngModel)]="nouvelleConsultation.taille" name="taille">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label for="allergie">Allergie:</label>
+        <input type="text" class="form-control" id="allergie" [(ngModel)]="nouvelleConsultation.allergie" name="allergie">
+      </div>
+      <div class="col">
+        <label for="antecedent">Antécédent:</label>
+        <input type="text" class="form-control" id="antecedent" [(ngModel)]="nouvelleConsultation.antecedent" name="antecedent">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label for="diagnostic">Diagnostic:</label>
+        <input type="text" class="form-control" id="diagnostic" [(ngModel)]="nouvelleConsultation.diagnostic" name="diagnostic">
+      </div>
+      <div class="col">
+        <label for="groupe_sanguin">Groupe Sanguin:</label>
+        <input type="text" class="form-control" id="groupe_sanguin" [(ngModel)]="nouvelleConsultation.groupe_sanguin" name="groupe_sanguin">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <label for="motif">Motif:</label>
+        <input type="text" class="form-control" id="motif" [(ngModel)]="nouvelleConsultation.motif" name="motif">
+      </div>
+      <div class="col">
+        <label for="profession">Profession:</label>
+        <input type="text" class="form-control" id="profession" [(ngModel)]="nouvelleConsultation.profession" name="profession">
+      </div>
+  
+    <!-- Le bouton d'ajout de consultation -->
+    <div class="d-flex justify-content-center"></div>
+         <button class="btn btn-success  m-3" (click)="ajoutConsultation()"><i class="bi bi-check-circle"></i>Ajouter Consultation</button>    
+    </div>
+    </form>
+  </div>
+<footere></footere>
