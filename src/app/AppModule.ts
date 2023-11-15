@@ -17,9 +17,9 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { FooterComponent } from './footer/footer.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ListeMedecinComponent } from './liste-medecin/liste-medecin.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
+import { ListePrescriptionComponent } from './liste-prescription/liste-prescription.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { MenuMedecinComponent } from './menu-medecin/menu-medecin.component';
 import { MenuPatientComponent } from './menu-patient/menu-patient.component';
@@ -53,7 +53,7 @@ import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.co
     ListePatientComponent,
     CarouselComponent,
     AjoutConsultationComponent,
-    ListeConsultationComponent
+    ListePrescriptionComponent,
   ],
   imports: [
     RouterModule,

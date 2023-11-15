@@ -1,0 +1,33 @@
+<!-- liste-prescription.component.html -->
+
+<div class="container">
+    <div *ngIf="listePrescription.length > 0; else noPrescription">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Medicament</th>
+            <th>Description</th>
+            <th>Medecin</th>
+            <th>Patient</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prescription of listePrescription">
+            <td>{{ prescription.id }}</td>
+            <td>{{ prescription.medicament.join(', ') }}</td>
+            <td>{{ prescription.description }}</td>
+            <td>{{ prescription.medecin.prenom }} {{ prescription.medecin.nom }}</td>
+            <td>{{ prescription.patient.prenom }} {{ prescription.patient.nom }}</td>
+            <td>{{ prescription.date | date:'medium' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <ng-template #noPrescription>
+      <p>No prescriptions available.</p>
+    </ng-template>
+  </div>
+  

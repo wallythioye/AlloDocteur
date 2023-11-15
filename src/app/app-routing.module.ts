@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AcceuilAdminComponent } from './acceuil-admin/acceuil-admin.component';
@@ -11,7 +10,6 @@ import { AjoutPrinscriptionComponent } from './ajout-prinscription/ajout-prinscr
 import { AjoutRendezvousMedecinComponent } from './ajout-rendezvous-medecin/ajout-rendezvous-medecin.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ListeMedecinComponent } from './liste-medecin/liste-medecin.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
@@ -42,7 +40,6 @@ const routes: Routes = [
   {path:"listePatient", component:ListePatientComponent},
   {path:"modifierRv", component:ModiferRendezVousComponent},
   {path:"ajoutConsultation", component:AjoutConsultationComponent},
-  {path:"listeConsultation", component:ListeConsultationComponent},
 ];
 
 @NgModule({
