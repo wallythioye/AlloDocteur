@@ -8,13 +8,13 @@ import { ServeurService } from './serveur.service';
   providedIn: 'root'
 })
 export class PrescriptionService {
-  private apiUrl = 'http://localhost:8080/api/prescription';
+  private apiUrl = '';
 
   constructor(private httpClient: HttpClient, private serveurService: ServeurService) { 
       this.apiUrl = serveurService.getFullUrl();
   }
 
-  getPrescription(): Observable<Prescription[]> {
+  getListePrescription(): Observable<Prescription[]> {
     return this.httpClient.get<Prescription[]>(this.apiUrl+"/prescriptions");
   }
 
@@ -22,7 +22,7 @@ export class PrescriptionService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.post<Prescription>(this.apiUrl, prescription, httpOptions);
+    return this.httpClient.post<Prescription>(this.apiUrl+'/prescriptions', prescription, httpOptions);
   }
 
   modifierPrescription(prescription: Prescription): Observable<Prescription> {

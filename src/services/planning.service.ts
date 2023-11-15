@@ -23,7 +23,7 @@ export class PlanningService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.post<Planning>(this.apiUrl, planning, httpOptions);
+    return this.httpClient.post<Planning>(this.apiUrl+'/plannings', planning, httpOptions);
   }
 
   modifierPlanning(planning: Planning): Observable<Planning> {

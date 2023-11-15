@@ -15,20 +15,21 @@ export class ConsultationService {
   }
 
   getListeConsultations(): Observable<Consultation[]> {
-    return this.httpClient.get<Consultation[]>(`${this.apiUrl}/consultations`);
+    return this.httpClient.get<Consultation[]>(this.apiUrl+'/consultations');
   }
 
   ajouterConsultation(nouvelleConsultation: Consultation): Observable<Consultation> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.post<Consultation>(`${this.apiUrl}/consultations`, nouvelleConsultation, httpOptions);
+    return this.httpClient.post<Consultation>(this.apiUrl+'/consultations', nouvelleConsultation, httpOptions);
+
   }
 
   modifierConsultation(consultation: Consultation): Observable<Consultation> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.put<Consultation>(`${this.apiUrl}/consultations/${consultation.id}`, consultation, httpOptions);
+    return this.httpClient.put<Consultation>(this.apiUrl+'/consultations'+'/consultation.id', consultation, httpOptions);
   }
 }

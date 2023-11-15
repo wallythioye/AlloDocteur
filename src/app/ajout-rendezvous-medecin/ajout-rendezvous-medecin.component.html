@@ -6,12 +6,26 @@
       <i class="bi bi-calendar-plus"></i> Ajout Rendez-vous
     </div>
     <form (ngSubmit)="ajouterRendezvous()">
+
+      <div class="form-group">
+        <label for="medecin">Médecin</label>
+        <select class="form-control" id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouveauRendezvous.medecin" required>
+          <option value="">Sélectionnez un médecin</option>
+          <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
+        </select>
+      </div>
+
       <div class="form-group">
         <label for="patient_id">Patient</label>
         <select class="form-control" id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouveauRendezvous.patient" required >
           <option value="">Sélectionnez un patient</option>
           <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dateCreation">Date de création</label>
+        <input type="date" class="form-control" id="dateCreation" name="dateCreation" [(ngModel)]="nouveauRendezvous.dateCreation" required>
       </div>
       
       <div class="form-group">

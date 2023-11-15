@@ -13,10 +13,10 @@ export class ListeConsultationComponent implements OnInit {
   constructor(private consultationService: ConsultationService) { }
 
   ngOnInit(): void {
-    this.chargeListeConsultations();
+    this.getListeConsultations();
   }
 
-  chargeListeConsultations(): void {
+    getListeConsultations(): void {
     this.consultationService.getListeConsultations().subscribe(
       (consultations) => {
         this.listeConsultations = consultations;

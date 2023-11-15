@@ -1,4 +1,3 @@
-import { Time } from "@angular/common";
 import { Medecin } from "./medecin";
 import { Patient } from "./patient";
 
@@ -9,5 +8,4 @@ export interface Prescription {
   medecin: Medecin;
   patient: Patient;
   date: Date;
-  heure : Time;
 }

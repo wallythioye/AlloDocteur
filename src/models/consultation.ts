@@ -2,6 +2,8 @@ import { Medecin } from "./medecin";
 import { Patient } from "./patient";
 
 export interface Consultation {
+
+    
     id: number;
     date: Date;
     poids: number;

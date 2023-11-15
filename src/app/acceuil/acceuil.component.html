@@ -1,2 +1,242 @@
-<menu></menu>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html"><img src="assets/images/logodocteur.svg" alt="" class="logo"></a>
+            <ul class="main-menu">
+                <li><a routerLink="/">Accueil</a></li>
+                <li><a routerLink="/apropos">A Propos</a></li>
+                <li><a routerLink="/services">Services</a></li>
+                <li><a routerLink="/contact">Contacts</a></li>
+                <div class="menu-sign">
+                  <li><a routerLink="/connexion">Se connecter</a></li>
+                  <li><a routerLink="/inscriptionPatient">S'inscrire</a></li>
+                </div>
+              </ul>
+        </div>
+    </div>
+  </header>
+  
+<div class="slider container-fluid">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/images/s3.jpg" class="d-block w-100" alt="...">
+           <div class="carousel-caption d-none d-md-block">
+            <h3 class="animate__animated animate__backInLeft">Votre santé  Notre Priorité</h3>
+            <p class="animate__animated animate__backInRight">améliorer la qualité des soins de santé
+                Prendre un rendez vous le plus vite possible avec assurance </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/images/s2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            <h3 class="animate__animated animate__backInLeft">Prennez votre rendez vous avec la technologie la plus avancée</h3>
+            <p class="animate__animated animate__backInRight">Avec des medicins Specialisés dans la medecine</p>
+          </div>
+        </div>
+        
+      </div><a href="about.html" title="about"></a>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>  
+    
+
+<!--    Services Starts Here   -->
+  
+<section class="services container-fluid">
+    <div class="container">
+        <div class="row section-title">
+            <h2>Nos services</h2>
+            <p>Simplifiez votre quotidien grace a la prise de Rendez vous Medicaux en ligne <br>Associez a des Fonctionnalités innoventes</p>
+        </div>
+        <div class="servic-row row">
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/001.png" alt="">
+                    <h4>cardiologue</h4>
+                    <p>Le cardiologue est un médecin spécialisé dans les maladies du cœur ou cardio-vasculaires : insuffisance cardiaque, hypertension artérielle, infarctus du myocarde, troubles du rythme cardiaque.</p>
+                </div>
+            </div>
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/002.png" alt="">
+                    <h4>Chirurgie</h4>
+                    <p>Le chirurgien-dentiste s'occupe médicalement de la bouche, des dents, des gencives et des maxillaires. Il soulage, répare et veille aussi à l'esthétique du sourire.</p>
+                </div>
+            </div>
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/003.png" alt="">
+                    <h4>Dermatologue</h4>
+                    <p>La dermatologie est la spécialité médicale qui s'intéresse à l'étude de la peau, des cheveux, des poils et des ongles ainsi qu'à la prévention, au diagnostic et au traitement des maladies qui les touchent.</p>
+                </div>
+            </div>
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/004.png" alt="">
+                    <h4>Pediatre</h4>
+                    <p>Après la naissance, le pédiatre s'assure que le bébé se porte bien. Par la suite, il surveille son éveil, son développement (visites systématiques du nourrisson).</p>
+                </div>
+            </div>
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/005.png" alt="">
+                    <h4>neurologue </h4>
+                    <p>La neurologie est une spécialité médicale s'intéressant au fonctionnement et aux maladies des systèmes nerveux central (cerveau et moelle épinière).</p>
+                </div>
+            </div>
+            <div class="servic-col col-md-4">
+                <div class="servcover">
+                    <img src="assets/images/icon/006.png" alt="">
+                    <h4>Cancerologue</h4>
+                    <p>Médecin qui pratique des opérations pour, par exemple, diagnostiquer un cancer, enlever une tumeur, assurer le fonctionnement correct d'un organe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- temoignages -->
+<section class="testimonial-container">
+    <div class="container">
+         <div class="section-title row">
+            <h2>Temoignages</h2>
+            <p>CE Qu’il s pensent de nous </p>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-offset-2 float-auto col-md-10">
+                <div id="testimonial-slider" class="owl-carousel">
+                    <div class="testimonial">
+                        <div class="pic">
+                            <img src="assets/images/testimonial/member-01.jpg" alt="">
+                        </div>
+                        <p class="description">
+                            Sécurité Rapidité Fiabilité Efficacité .. Cest une plateforme de prise de rdv médicaux en ligne super intéressante. cela concerne aussi bien les médecins que les patients.😊 
+                        </p>
+                        <h3 class="title">williamson
+                            <span class="post"> -  Developer</span>
+                        </h3>
+                    </div>
+                    <div class="testimonial">
+                        <div class="pic">
+                            <img src="assets/images/testimonial/member-02.jpg" alt="">
+                        </div>
+                        <p class="description">
+                            innovant ,,, raccourcissant,,,, disponible 24h/7 je vous recommande de s'inscrire  Vos données sont bien protégées aussi AllodDocteur le meillieur👍.
+                        </p>
+                        <h3 class="title">Kristina
+                            <span class="post"> - Teacher</span>
+                        </h3>
+                    </div>
+                    <div class="testimonial">
+                        <div class="pic">
+                            <img src="assets/images/testimonial/member-02.jpg" alt="">
+                        </div>
+                        <p class="description">
+                            Simple, rapide et efficace  Et grâce à cette dernière vous pouvez éviter les déplacements inutiles et réduire les rdv non-honorés. Ainsi, je vous le recommande vivement. 💪🏾.
+                        </p>
+                        <h3 class="title">Kristina
+                            <span class="post"> - Teacher</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- team -->
+<section class="our-team">
+    <div class="container">
+        <div class="section-title row">
+            <h2>Nos Docteurs</h2>
+        </div>
+        <div class="row team-row">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-usr">
+                    <img src="assets/images/team/d1.jpg" alt="">
+                    <div class="det-o">
+                        <h4>Aly Sow</h4>
+                        <i>Dermatologue</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-usr">
+                    <img src="assets/images/team/d2.jpg" alt="">
+                    <div class="det-o">
+                        <h4>Miriam Thioye</h4>
+                        <i>Pediatre</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-usr">
+                    <img src="assets/images/team/d3.jpg" alt="">
+                    <div class="det-o">
+                        <h4>Mohamed Kadji</h4>
+                        <i>chirurgien</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-usr">
+                    <img src="assets/images/team/d4.jpg" alt="">
+                    <div class="det-o">
+                        <h4>Gnilane Thiao</h4>
+                        <i>Infirmiere</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog container-fluid">
+        <div class="container">
+            <div class="section-title row">
+                <h2>Les Bloc Medicaux</h2>
+                <p>Retrouve plisieurs departement dans AlloDocteur avec des medecin specialiser c’est sûr et rapide a utiluiser.</p>
+            </div>
+            <div class="row mt-5 blog-row">
+                <div class="col-md-4">
+                    <div class="blogcol">
+                        <img src="assets/images/blog/b1.jpg" alt="">
+                        <h4>Operatoire</h4>
+                        <span>Le bloc opératoire est une structure de l'hôpital où sont pratiquées les interventions chirurgicales et les gestes d’anesthésie-réanimation nécessaires</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blogcol">
+                        <img src="assets/images/blog/b2.jpg" alt="">
+                        <h4>Urgence</h4>
+                        <span>L'urgence désigne la nécessité d'une intervention rapide, sans laquelle un préjudice irréparable sera créé. Elle se rapporte à ce qui requiert une décision et une action immédiates.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blogcol">
+                        <img src="assets/images/blog/b3.jpg" alt="">
+                        <h4>Maternité</h4>
+                        <span>Nos maternités assurent l'ensemble du suivi de votre grossesse, du dépistage prénatal à la préparation à la naissance, ainsi  que la surveillance médicale.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
 <footere></footere>
