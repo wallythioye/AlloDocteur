@@ -1,5 +1,6 @@
+
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AcceuilAdminComponent } from './acceuil-admin/acceuil-admin.component';
 import { AcceuilMedecinComponent } from './acceuil-medecin/acceuil-medecin.component';
 import { AcceuilPatientComponent } from './acceuil-patient/acceuil-patient.component';

@@ -5,8 +5,7 @@ import { Consultation } from 'src/models/consultation';
 import { ServeurService } from './serveur.service';
 
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root'})
 export class ConsultationService {
   private apiUrl = '';
 
