@@ -64,7 +64,7 @@ export class AjoutPrinscriptionComponent {
       }
   
   refreshPrescriptions(): void {
-    this.prescriptionService.getPrescription().subscribe(
+    this.prescriptionService.getListePrescription().subscribe(
       {
         next: (prescriptions: Prescription[]) => {
           this.prescriptions = prescriptions;

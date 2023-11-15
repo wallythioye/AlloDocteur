@@ -1,7 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AcceuilAdminComponent } from './acceuil-admin/acceuil-admin.component';
 import { AcceuilMedecinComponent } from './acceuil-medecin/acceuil-medecin.component';
@@ -28,7 +28,6 @@ import { ModiferRendezVousComponent } from './modifer-rendez-vous/modifer-rendez
 import { PlanningListeComponent } from './planning-liste/planning-liste.component';
 import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,7 @@ import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.co
     ListePatientComponent,
     CarouselComponent,
     AjoutConsultationComponent,
-    ListePrescriptionComponent,
+    ListePrescriptionComponent
   ],
   imports: [
     RouterModule,
@@ -65,5 +64,4 @@ import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.co
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
