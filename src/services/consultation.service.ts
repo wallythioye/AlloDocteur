@@ -24,11 +24,16 @@ export class ConsultationService {
     return this.httpClient.post<Consultation>(this.apiUrl+'/consultations', nouvelleConsultation, httpOptions);
 
   }
+  
 
   modifierConsultation(consultation: Consultation): Observable<Consultation> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.httpClient.put<Consultation>(this.apiUrl+'/consultations'+'/consultation.id', consultation, httpOptions);
+  }
+
+  getConsultationById(consultationId: number): Observable<Consultation> {
+    return this.httpClient.get<Consultation>(`${this.apiUrl}/consultations/${consultationId}`);
   }
 }

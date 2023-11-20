@@ -1,6 +1,6 @@
 
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AcceuilAdminComponent } from './acceuil-admin/acceuil-admin.component';
 import { AcceuilMedecinComponent } from './acceuil-medecin/acceuil-medecin.component';
 import { AcceuilPatientComponent } from './acceuil-patient/acceuil-patient.component';
@@ -11,13 +11,20 @@ import { AjoutPrinscriptionComponent } from './ajout-prinscription/ajout-prinscr
 import { AjoutRendezvousMedecinComponent } from './ajout-rendezvous-medecin/ajout-rendezvous-medecin.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ListeMedecinComponent } from './liste-medecin/liste-medecin.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
+import { ListePrescriptionComponent } from './liste-prescription/liste-prescription.component';
+import { ListeRendezVousComponent } from './liste-rendez-vous/liste-rendez-vous.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { MenuMedecinComponent } from './menu-medecin/menu-medecin.component';
 import { MenuPatientComponent } from './menu-patient/menu-patient.component';
 import { MenuComponent } from './menu/menu.component';
 import { ModiferRendezVousComponent } from './modifer-rendez-vous/modifer-rendez-vous.component';
+import { ModifierConsultationComponent } from './modifier-consultation/modifier-consultation.component';
+import { ModifierMedecinComponent } from './modifier-medecin/modifier-medecin.component';
+import { ModifierPlanningComponent } from './modifier-planning/modifier-planning.component';
+import { ModifierPrescriptionComponent } from './modifier-prescription/modifier-prescription.component';
 import { PlanningListeComponent } from './planning-liste/planning-liste.component';
 import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.component';
 
@@ -35,12 +42,19 @@ const routes: Routes = [
   {path:"ajoutMedecin", component:AjoutMedecinComponent},
   {path:"ajoutPrescription", component:AjoutPrinscriptionComponent},
   {path:"ajoutrvMedecin", component:AjoutRendezvousMedecinComponent},
-  {path:"planningMedecin", component:PlanningMedecinComponent},
-  {path:"planningListe", component:PlanningListeComponent},
+  {path:"ajoutPlanning", component:PlanningMedecinComponent},
+  {path:"listePlanning", component:PlanningListeComponent},
   {path:"listeMedecin", component:ListeMedecinComponent},
   {path:"listePatient", component:ListePatientComponent},
   {path:"modifierRv", component:ModiferRendezVousComponent},
   {path:"ajoutConsultation", component:AjoutConsultationComponent},
+  {path:"listePrescription", component:ListePrescriptionComponent},
+  {path:"listeConsultation", component:ListeConsultationComponent},
+  {path:"listeRendezvous", component:ListeRendezVousComponent},
+  {path:"modifierConsultation", component:ModifierConsultationComponent},
+  {path:"modifierPrescription", component:ModifierPrescriptionComponent},
+  {path:"modifierPlanning", component:ModifierPlanningComponent},
+  {path:"modifierMedecin", component:ModifierMedecinComponent},
 ];
 
 @NgModule({

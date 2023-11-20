@@ -1,7 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AcceuilAdminComponent } from './acceuil-admin/acceuil-admin.component';
 import { AcceuilMedecinComponent } from './acceuil-medecin/acceuil-medecin.component';
@@ -20,6 +19,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ListeMedecinComponent } from './liste-medecin/liste-medecin.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListePrescriptionComponent } from './liste-prescription/liste-prescription.component';
+import { ListeRendezVousComponent } from './liste-rendez-vous/liste-rendez-vous.component';
+
+import { FormsModule } from '@angular/forms';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { MenuMedecinComponent } from './menu-medecin/menu-medecin.component';
 import { MenuPatientComponent } from './menu-patient/menu-patient.component';
@@ -27,6 +29,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ModiferRendezVousComponent } from './modifer-rendez-vous/modifer-rendez-vous.component';
 import { PlanningListeComponent } from './planning-liste/planning-liste.component';
 import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -52,14 +55,17 @@ import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.co
     ListePatientComponent,
     CarouselComponent,
     AjoutConsultationComponent,
-    ListePrescriptionComponent
+    ListePrescriptionComponent,
+    ListeRendezVousComponent,
   ],
   imports: [
     RouterModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

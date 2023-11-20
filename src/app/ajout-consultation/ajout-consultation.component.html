@@ -1,74 +1,87 @@
-<menu-medecin></menu-medecin>
-<div class="container border border-success rounded p-3">
-    <div class="bg-success text-light p-2 rounded text-center">
-        <i class="bi bi-calendar-plus"></i> AJOUTER CONSULTATION
-      </div>
-    <form (ngSubmit)="ajoutConsultation()">
 
-    <div class="row">
-      <div class="col">
-        <label for="medecin">Médecin</label>
-        <select class="form-control" id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouvelleConsultation.medecin" required>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Ajout Consultation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<menu-medecin></menu-medecin>
+<body>
+  <div class="container m-5">
+    <div class="title">AJOUT CONSULTATION</div>
+    <div class="content">
+  <form (ngSubmit)="ajoutConsultation()">
+    <div class="user-details">
+      <div class="input-box">
+
+        <span class="details">Médecin</span>
+        <select id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouvelleConsultation.medecin_id" required>
           <option value="">Sélectionnez un médecin</option>
           <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
         </select>
       </div>
 
-      <div class="col">
-        <label for="patient_id">Patient</label>
-        <select class="form-control" id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouvelleConsultation.patient" required >
+      <div class="input-box">
+        <span class="details">Patient</span>
+        <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouvelleConsultation.patient_id" required >
           <option value="">Sélectionnez un patient</option>
           <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
         </select>
       </div>
-    </div>
-    <div class="row m-3">
-      <div class="col">
-        <label for="date">Date:</label>
-        <input type="date" class="form-control" id="date" [(ngModel)]="nouvelleConsultation.date" name="date">
+    
+      <div class="input-box">
+        <span class="details">Date:</span>
+        <input type="date" title="entrer la date" id="date" [(ngModel)]="nouvelleConsultation.date" name="date">
       </div>
-      <div class="col">
-        <label for="poids">Poids:</label>
-        <input type="number" class="form-control" id="poids" [(ngModel)]="nouvelleConsultation.poids" name="poids">
+      <div class="input-box">
+        <span class="details">Poids:</span>
+        <input type="number" placeholder="Saisir le poids" id="poids" [(ngModel)]="nouvelleConsultation.poids" name="poids">
       </div>
       
-    </div>
-    <div class="row mt-3">
-      <div class="col">
-        <label for="taille">Taille:</label>
-        <input type="number" class="form-control" id="taille" [(ngModel)]="nouvelleConsultation.taille" name="taille">
+      <div class="input-box">
+        <span class="details">Taille:</span>
+        <input type="number" placeholder="Saisir la taille" id="taille" [(ngModel)]="nouvelleConsultation.taille" name="taille">
       </div>
-      <div class="col">
-        <label for="allergie">Allergie:</label>
-        <input type="text" class="form-control" id="allergie" [(ngModel)]="nouvelleConsultation.allergie" name="allergie">
+      <div class="input-box">
+        <span class="details">Allergie:</span>
+        <input type="text" placeholder="Saisir son allergie" id="allergie" [(ngModel)]="nouvelleConsultation.allergie" name="allergie">
       </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col">
-        <label for="antecedent">Antécédent:</label>
-        <input type="text" class="form-control" id="antecedent" [(ngModel)]="nouvelleConsultation.antecedent" name="antecedent">
+      <div class="input-box">
+        <span class="details">Antécédent:</span>
+        <input type="text" placeholder="Saisir l'antecedant" id="antecedent" [(ngModel)]="nouvelleConsultation.antecedent" name="antecedent">
       </div>
-      <div class="col">
-        <label for="diagnostic">Diagnostic:</label>
-        <input type="text" class="form-control" id="diagnostic" [(ngModel)]="nouvelleConsultation.diagnostic" name="diagnostic">
+      <div class="input-box">
+        <span class="details">Diagnostic:</span>
+        <input type="text" id="diagnostic" placeholder="Donne le diagnostic" [(ngModel)]="nouvelleConsultation.diagnostic" name="diagnostic">
       </div>
-    </div>
-    <div class="row mt-3">   
-      <div class="col">
-        <label for="groupe_sanguin">Groupe Sanguin:</label>
-        <input type="text" class="form-control" id="groupe_sanguin" [(ngModel)]="nouvelleConsultation.groupe_sanguin" name="groupe_sanguin">
+    
+      <div class="input-box">
+        <span class="details">Groupe Sanguin:</span>
+        <input type="text" id="groupe_sanguin" placeholder="Saisir son groupe sanguin" [(ngModel)]="nouvelleConsultation.groupeSanguin" name="groupe_sanguin">
       </div>
-    </div>
-      <div class="col">
-        <label for="motif">Motif:</label>
-        <input type="text" class="form-control" id="motif" [(ngModel)]="nouvelleConsultation.motif" name="motif">
+  
+      <div class="input-box">
+        <span class="details">Motif:</span>
+        <input type="text" placeholder="Saisir le motif" id="motif" [(ngModel)]="nouvelleConsultation.motif" name="motif">
       </div>
-      <div class="col">
-        <label for="profession">Profession:</label>
-        <input type="text" class="form-control" id="profession" [(ngModel)]="nouvelleConsultation.profession" name="profession">
+      <div class="input-box">
+        <span class="details">Profession:</span>
+        <input type="text" placeholder="Saisir son profession" id="profession" [(ngModel)]="nouvelleConsultation.profession" name="profession">
       </div>
-    <div class="d-flex justify-content-center"></div>
-         <button class="btn btn-success  m-3" (click)="ajoutConsultation()"><i class="bi bi-check-circle"></i>Ajouter Consultation</button>    
-    </form>
+      </div>
+      <div class="button">
+        <input type="submit" (click)="ajoutConsultation()" value="AJOUTER CONSULTATION">
+      </div>
+  </form>
   </div>
+</div>
+<script src="chemin-vers-votre-script-angular.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 <footere></footere>
+</html>

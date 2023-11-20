@@ -1,13 +1,13 @@
 export interface Utilisateur {
-  id: number;
+  id:number;
   prenom: string;
   nom: string;
-  sexe: string; 
+  sexe: string;
   age: number;
   adresse: string;
   telephone: string;
   email: string;
   password: string;
-  profil: string; 
-  statut: number; 
+  profil: string;
+  statut: number;
 }

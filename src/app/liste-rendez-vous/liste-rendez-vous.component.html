@@ -1,0 +1,27 @@
+<div class="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Date de création</th>
+          <th>Statut</th>
+          <th>Médecin</th>
+          <th>Patient</th>
+          <th>Motif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rendezVous of listeRendezVous">
+          <td>{{ rendezVous.id }}</td>
+          <td>{{ rendezVous.date }}</td>
+          <td>{{ rendezVous.dateCreation }}</td>
+          <td>{{ rendezVous.statut }}</td>
+          <td>{{ rendezVous.medecin.prenom }} {{ rendezVous.medecin.nom }}</td>
+          <td>{{ rendezVous.patient.prenom }} {{ rendezVous.patient.nom }}</td>
+          <td>{{ rendezVous.motif }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

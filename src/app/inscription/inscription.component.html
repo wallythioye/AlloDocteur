@@ -89,9 +89,9 @@
             <input type="number" id="age" name="age" placeholder="Saisir l'âge" required [(ngModel)]="utilisateur.age">
           </div>
           <div class="input-box">
-            <label for="sexe" class="details">Sexe</label>
+            <span class="details">Sexe</span>
             <div class="custom-select">
-              <select id="sexe" name="sexe" [(ngModel)]="utilisateur.sexe" required>
+              <select id="sexe" title="Selectionner le sexe" name="sexe" [(ngModel)]="utilisateur.sexe" required>
                 <option value="">-- Sélectionner le sexe --</option>
                 <option value="Homme">Homme</option>
                 <option value="Femme">Femme</option>
@@ -116,7 +116,7 @@
           </div>
         </div>
                   
-        <div class="button" routerLink="/login">
+        <div class="button">
           <input type="submit" value="Inscrire">
         </div>
       </form>

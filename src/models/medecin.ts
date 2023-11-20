@@ -1,9 +1,13 @@
+import { Consultation } from "./consultation";
+import { Planning } from "./planning";
 import { Prescription } from "./prescription";
 import { RendezVous } from "./rendezvous";
 import { Utilisateur } from "./utilisateur";
 
-export interface Medecin extends Utilisateur{
+export interface Medecin extends Utilisateur {
     specialite: string;
-    prescriptions:Prescription[];
-    rendezvous:RendezVous[];
+    prescriptions: Prescription[];
+    rendezVous: RendezVous[];
+    consultations: Consultation[];
+    planings: Planning[];
 }

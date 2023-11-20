@@ -2,18 +2,17 @@ import { Medecin } from "./medecin";
 import { Patient } from "./patient";
 
 export interface Consultation {
-
-    
     id: number;
+    motif: string;
+    antecedent: string;
+    allergie: string;
     date: Date;
+    groupeSanguin: string;
+    diagnostic: string;
     poids: number;
     taille: number;
-    medecin: Medecin;
-    patient: Patient;
-    allergie: string;
-    antecedent: string;
-    diagnostic: string;
-    groupe_sanguin: string;
-    motif: string;
     profession: string;
-}
+    medecin_id: Medecin;
+    patient_id: Patient;
+  }
+  

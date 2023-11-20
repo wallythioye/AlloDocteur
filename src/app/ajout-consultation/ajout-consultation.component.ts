@@ -18,18 +18,21 @@ export class AjoutConsultationComponent {
   listeConsultations: Consultation[] = [];
 
   nouvelleConsultation: Consultation = {
-    id: 0,
+    
+    id:0,
     date: new Date(),
     poids: 0,
     taille: 0,
-    medecin: {} as Medecin,
-    patient: {} as Patient,
     allergie: '',
     antecedent: '',
     diagnostic: '',
-    groupe_sanguin: '',
+    groupeSanguin:'',
     motif: '',
-    profession: ''
+    profession: '',
+    medecin_id: {} as Medecin,
+    patient_id: {} as Patient
+
+   
   };
 
   errorMessage = '';

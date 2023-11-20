@@ -3,9 +3,10 @@ import { Patient } from "./patient";
 
 export interface Prescription {
   id: number;
-  medicament: string[];
+  medicament: string;
   description: string;
-  medecin: Medecin;
-  patient: Patient;
+  medecin: Medecin;  
+  patient: Patient; 
   date: Date;
 }
+

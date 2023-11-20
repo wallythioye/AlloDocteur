@@ -14,7 +14,6 @@ import { PrescriptionService } from 'src/services/prescription.service';
   styleUrls: ['./ajout-prinscription.component.scss']
 })
 export class AjoutPrinscriptionComponent {
- 
 
   nouvellePrescription: Prescription = {
     id:0,
@@ -22,7 +21,7 @@ export class AjoutPrinscriptionComponent {
     patient: {} as Patient,
     description: '',
     date: new Date(),
-    medicament: []
+    medicament: ''
   };
 
   prescriptions: Prescription[] = [];
@@ -40,7 +39,7 @@ export class AjoutPrinscriptionComponent {
       this.getPatients();
       this.getMedecins();
     }
-  
+    
     getPatients(): void {
       this.patientService.getPatients().subscribe(
         patients => {

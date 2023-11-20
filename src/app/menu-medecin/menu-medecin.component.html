@@ -18,11 +18,21 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-building-fill"></i>Rendez-vous
+            <i class="bi bi-building-fill"></i>Consultation
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="#" routerLinkAction="text-primary">Ajouter Rendez-vous</a></li>
-            <li><a class="dropdown-item" routerLink="#">Rv a venir</a></li>
+            <li><a class="dropdown-item" routerLink="/ajoutConsultation" routerLinkAction="text-primary">Ajouter Consultation</a></li>
+            <li><a class="dropdown-item" routerLink="#">Mes Consultation</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-building-fill"></i>Prescription
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="#" routerLinkAction="text-primary">Ajouter Prescription</a></li>
+            <li><a class="dropdown-item" routerLink="#">Mes Presccription</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -32,12 +42,13 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="#" routerLinkAction="text-primary">Mes Patient</a></li>
-            <li><a class="dropdown-item" routerLink="#">Ajouter un Patient</a></li>
+            <li><a class="dropdown-item" routerLink="">Ajouter un Patient</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link disabled">Statistique</a>
+        </li> -->
       </ul>
       <form class="d-flex" role="search">
         <a href="#" class="btn btn-danger m-3">Déconnexion</a>

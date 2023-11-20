@@ -16,20 +16,20 @@ export class PlanningService {
    }
 
   getPlanning(): Observable<Planning[]> {
-    return this.httpClient.get<Planning[]>(this.apiUrl+"/plannings");
+    return this.httpClient.get<Planning[]>(this.apiUrl+'/plannings');
   }
 
-  ajoutPlanning(planning: Planning): Observable<Planning> {
+  ajoutPlanning(nouveauPlanning: Planning): Observable<Planning> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.post<Planning>(this.apiUrl+'/plannings', planning, httpOptions);
+    return this.httpClient.post<Planning>(this.apiUrl+'/plannings', nouveauPlanning, httpOptions);
   }
 
-  modifierPlanning(planning: Planning): Observable<Planning> {
+  modifierPlanning(nouveauPlanning: Planning): Observable<Planning> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.put<Planning>(`${this.apiUrl}/${planning.id}`, planning, httpOptions);
+    return this.httpClient.put<Planning>(`${this.apiUrl}/${nouveauPlanning.id}`, nouveauPlanning, httpOptions);
   }
 }

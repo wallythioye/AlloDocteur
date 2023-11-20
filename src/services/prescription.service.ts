@@ -10,7 +10,7 @@ import { ServeurService } from './serveur.service';
 export class PrescriptionService {
   private apiUrl = '';
 
-  constructor(private httpClient: HttpClient, private serveurService: ServeurService) { 
+  constructor(private httpClient: HttpClient, private serveurService: ServeurService) {
       this.apiUrl = serveurService.getFullUrl();
   }
 

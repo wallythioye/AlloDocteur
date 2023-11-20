@@ -17,7 +17,7 @@ export class PatientService {
 getPatients(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(`${this.apiUrl}/patients`);
   }
-
+  
   ajouterPatient(nouveauPatient: Utilisateur): Observable<Utilisateur> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,6 +29,6 @@ getPatients(): Observable<Utilisateur[]> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.httpClient.put<Utilisateur>(`${this.apiUrl}/${patient.id}`, patient, httpOptions);
+    return this.httpClient.put<Utilisateur>(`${this.apiUrl}/${patient}`, patient, httpOptions);
   }
 }

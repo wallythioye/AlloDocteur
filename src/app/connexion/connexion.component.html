@@ -1,10 +1,11 @@
 <menu></menu>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en"dir="ltr" ng-app="app">
   <head>
-    <meta charset="UTF-8">
-    <title> Login </title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+      <meta charset="UTF-8">
+      <title> Login </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
 <body>
   <div class="main_div">
@@ -14,6 +15,7 @@
       <a href="#"><i class="fab fa-twitter"></i><span>Twitter</span></a>
     </div>
     <form action="#">
+      <div class="user-details">
       <div class="input_box">
         <input type="email"  id="email" name="email" placeholder="Saisir l'adresse e-mail" required>
         <div class="icon"><i class="fas fa-user"></i></div>
@@ -37,9 +39,9 @@
       <div class="sign_up">
         vous n'avez pas un compte <a routerLink="/register">s'incrire</a>
       </div>
+      </div>
     </form>
   </div>
-  
 </body>
 </html>
 <footere></footere>

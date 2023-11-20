@@ -15,7 +15,7 @@ export class ModiferRendezVousComponent {
   constructor(private rendezvousService: RendezvousServiceService) {}
 
   refreshRendezvous(): void {
-    this.rendezvousService.getRendezvous().subscribe(
+    this.rendezvousService.getListeRendezvous().subscribe(
       {
         next: (rendezvous: RendezVous[]) => {
           this.rendezvous = rendezvous;

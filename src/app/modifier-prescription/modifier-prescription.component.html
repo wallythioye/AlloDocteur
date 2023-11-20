@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Modifier Prescription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title">MODIFIER PRESCRIPTION</div>
+    <div class="content">
+      <form action="#" >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nom Médicament</span>
+            <input type="text" id="medicament" name="medicament" placeholder="Saisir le nom du médicament" required>
+          </div>
+          <!-- <div class="input-box">
+            <span class="details">Médecin</span>
+            <select id="medecin" name="medecin_id" title="Sélectionner un médecin" required>
+              <option value="" disabled selected>Sélectionnez un médecin</option>
+              <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">Patient</span>
+            <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouvellePrescription.patient" required >
+            <option value="" disabled selected>Sélectionnez un patient</option>
+            <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
+          </select>
+          </div> -->
+          <div class="input-box">
+            <span class="details">Description</span>
+            <input type="text" id="description" name="description"  placeholder="Saisir la description" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Date Prescription</span>
+            <input type="date"  id="date" name="date" title="Sélectionner un patient" required>
+          </div>     
+        </div>
+        <div class="button">
+          <input type="submit" value="MODIFIER PRESCRIPTION">
+        </div>
+      </form>
+      </div>
+    </div>
+  <script src="chemin-vers-votre-script-angular.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<style>
+  .container {
+    width: 80%; /* Adjust the width as needed */
+  }
+
+  .input-box {
+    margin-bottom: 15px;
+  }
+
+  /* Adjust the styling of select elements */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .title {
+    text-align: center;
+    background-color: linear-gradient(135deg, #f1f2f3, #4CAF50);
+    color: white;
+    padding: 10px; 
+    margin: 0; 
+  }
+</style>

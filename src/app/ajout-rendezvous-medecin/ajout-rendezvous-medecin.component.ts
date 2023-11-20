@@ -64,20 +64,21 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
         }
       );
     }
-  ajouterRendezvous(): void {
-    this.rendezvousService.ajouterRendezvous(this.nouveauRendezvous).subscribe(
-      (nouveauRendezvous: RendezVous) => {
-        this.refreshRendezvous();
-        console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
-      },
-      (err: any) => {
-        console.error('Erreur lors de l\'ajout du rendez-vous :', err);
-      }
-    );
-  }
+    ajouterRendezvous(): void {
+      this.rendezvousService.ajouterRendezvous(this.nouveauRendezvous).subscribe(
+        (nouveauRendezvous: RendezVous) => {
+          this.refreshRendezvous();
+          console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
+        },
+        (err: any) => {
+          console.error('Erreur lors de l\'ajout du rendez-vous :', err);
+        }
+      );
+    }
+    
 
   refreshRendezvous(): void {
-    this.rendezvousService.getRendezvous().subscribe(
+    this.rendezvousService.getListeRendezvous().subscribe(
       (rendezvous: RendezVous[]) => {
         this.rendezvous = rendezvous;
         this.successMessage = 'Requête valide';
@@ -88,4 +89,3 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
     );
   }
 }
-
