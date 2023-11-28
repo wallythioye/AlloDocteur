@@ -1,0 +1,34 @@
+<menu-medecin></menu-medecin>
+<section class="attendance m-l-60">
+	<div class="attendance-list">
+	  <h1>LISTE DES PLANNING</h1>
+	  <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nom Medecin</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let planning of plannings">
+          <td>{{ planning.id}}</td>
+          <td>{{ planning.medecin.prenom}} {{planning.medecin.nom}}</td>
+          <td>{{ planning.date}}</td>
+          <td>
+            <button (click)="editPlanning(planning.id)" class="modif">
+              Modifier
+            </button>
+          </td>
+          <td>
+            <button (click)="confirmDelete(planning.id)" class="suppre">
+              Supprimer
+            </button>
+          </td>
+        </tr> 
+    </tbody>
+</table>
+</div>
+</section>
+<footere></footere>

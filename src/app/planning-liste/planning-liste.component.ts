@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Planning } from 'src/models/planning';
 import { PlanningService } from 'src/services/planning.service';
 
@@ -11,10 +12,29 @@ export class PlanningListeComponent implements OnInit{
 
   plannings: Planning[] = [];
 
-  constructor(private planningService : PlanningService){}
+  errorMessage = '';
+  successMessage = '';
+
+  constructor(private planningService : PlanningService, private router : Router){}
 
   ngOnInit(): void {
     this.getPlanning();
+  }
+
+  refreshPlannings(): void {
+    this.planningService.getPlanning().subscribe(
+      {
+        next: (plannings : Planning[]) => {
+          this.plannings = plannings;
+        },
+        error: (err: any) => {
+          this.errorMessage = 'Erreur de requête';
+        },
+        complete: () => {
+          this.successMessage = 'Requête valide';
+        },
+      }
+    );
   }
 
   getPlanning(): void {
@@ -27,4 +47,30 @@ export class PlanningListeComponent implements OnInit{
       }
     );
   }
+
+  editPlanning(planningId: number): void {
+    this.router.navigate(['/modifierPlanning', planningId]);
+  }
+
+  deletePlanning(id: number): void{
+    this.planningService.supprimerPlanning(id).subscribe(
+      () => {
+        console.log('Suppression réussie.');
+        this.refreshPlannings();
+      },
+      error => {
+        console.error('Erreur lors de la suppression du planning: ', error);
+        
+      }
+    );
+  }
+  confirmDelete(id: number): void{
+    const result = confirm('Êtes-vous sûr de vouloir supprimer cette planning ?');
+
+    if (result) {
+      this.deletePlanning(id);
+    }
+  }
+  
 }
+  

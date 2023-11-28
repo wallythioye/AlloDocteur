@@ -1,4 +1,4 @@
-import { AppModule } from './app/app.module';
+import { AppModule } from './app/AppModule';
 import { platformBrowserDynamic } from './main';
 
 platformBrowserDynamic().bootstrapModule(AppModule)

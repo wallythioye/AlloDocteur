@@ -1,1 +1,62 @@
-<p>modifier-planning works!</p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title>Ajout Planning</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<menu-medecin></menu-medecin>
+<body>
+<div class="container">
+  <div class="title">MODIFIER LE PLZNNING</div>
+  <div class="content">
+    <form (ngSubmit)="onSubmit()">
+      <div class="user-details">
+
+        <div class="input-box">
+          <span class="details">Date</span>
+          <input type="date" id="date" title="Saisir la date" name="date" [(ngModel)]="planning.date" required>
+        </div>
+        
+      </div>
+      <div class="button">
+        <input type="submit" value="MODIFIER LE RENDEZ-VOUS">
+      </div>
+
+    </form>
+  </div>
+</div>
+<script src="chemin-vers-votre-script-angular.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<footere></footere>
+
+<style>
+  .container {
+    width: 80%; /* Adjust the width as needed */
+  }
+
+  .input-box {
+    margin-bottom: 15px;
+  }
+
+  /* Adjust the styling of select elements */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .title {
+    text-align: center;
+    background-color: linear-gradient(135deg, #f1f2f3, #4CAF50);
+    color: white;
+    padding: 10px; 
+    margin: 0; 
+  }
+</style>

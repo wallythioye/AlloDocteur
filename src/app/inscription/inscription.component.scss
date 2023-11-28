@@ -1,1 +1,25 @@
 @import "../../assets/scss/styleForm.css";
+
+.container {
+    width: 80%; /* Adjust the width as needed */
+  }
+
+  .input-box {
+    margin-bottom: 15px;
+  }
+
+  /* Adjust the styling of select elements */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .title {
+    text-align: center;
+    background-color: linear-gradient(135deg, #f1f2f3, #4CAF50);
+    color: white;
+    padding: 10px; 
+    margin: 0; 
+  }

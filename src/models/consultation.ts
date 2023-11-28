@@ -12,7 +12,7 @@ export interface Consultation {
     poids: number;
     taille: number;
     profession: string;
-    medecin_id: Medecin;
-    patient_id: Patient;
+    medecin: Medecin;
+    patient: Patient;
   }
   

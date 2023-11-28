@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
 import { RendezVous } from 'src/models/rendezvous';
@@ -10,8 +10,6 @@ import { RendezvousServiceService } from 'src/services/rendezvous-service.servic
 
 @Component({
   selector: 'app-ajout-rendezvous-patient',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './ajout-rendezvous-patient.component.html',
   styleUrl: './ajout-rendezvous-patient.component.scss'
 })
@@ -37,7 +35,9 @@ export class AjoutRendezvousPatientComponent implements OnInit{
   constructor(
     private rendezvousService: RendezvousServiceService,
     private patientService: PatientService,
-    private medecinService: MedecinService
+    private medecinService: MedecinService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
 
@@ -73,6 +73,7 @@ export class AjoutRendezvousPatientComponent implements OnInit{
         (nouveauRendezvous: RendezVous) => {
           this.refreshRendezvous();
           console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
+          this.gotoList();
         },
         (err: any) => {
           console.error('Erreur lors de l\'ajout du rendez-vous :', err);
@@ -90,5 +91,8 @@ export class AjoutRendezvousPatientComponent implements OnInit{
           this.errorMessage = 'Erreur de requête';
         }
       );
+    }
+    gotoList() {
+      this.router.navigate(['/listeRendezvous']);
     }
 }

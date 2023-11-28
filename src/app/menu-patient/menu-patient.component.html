@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+          <a class="nav-link active" aria-current="page" href="/">Acceuil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Mon Profil</a>
@@ -18,16 +18,16 @@
             <i class="bi bi-building-fill"></i>Rendez-vous
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="#" routerLinkAction="text-primary">Prendre Rendez-vous</a></li>
-            <li><a class="dropdown-item" routerLink="#">Mes Rendez-vous</a></li>
+            <li><a class="dropdown-item" routerLink="/ajoutrendezvous" routerLinkAction="text-primary">Prendre Rendez-vous</a></li>
+            <li><a class="dropdown-item" routerLink="/listeRendezvous">Mes Rendez-vous</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Dossier Médical</a>
+          <a class="nav-link disabled" routerLink="/listeConsultation">Voir Consultation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Mes Médicaments </a>
+          <a class="nav-link disabled" routerLink="/listePrescription">Voir Prescription</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

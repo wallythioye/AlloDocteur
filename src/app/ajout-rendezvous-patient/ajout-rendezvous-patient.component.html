@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title>Ajout Rendez-Vous</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<menu-patient></menu-patient>
+<body>
+<div class="container">
+  <div class="title">PRENDRE RENDEZ-VOUS</div>
+  <div class="content">
+    <form (ngSubmit)="ajouterRendezvous()">
+      <div class="user-details">
+      <div class="input-box">
+        <label for="medecin">Médecin</label>
+        <select id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouveauRendezvousPatient.medecin" required>
+          <option value="">Sélectionnez un médecin</option>
+          <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
+        </select>
+      </div>
+
+      <div class="input-box">
+        <span class="details">Patient</span>
+        <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouveauRendezvousPatient.patient" required >
+          <option value="">Sélectionnez un patient</option>
+          <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
+        </select>
+      </div>
+      
+      <div class="input-box">
+        <span class="details">Date</span>
+        <input type="date" id="date" title="entrer la date" name="date" [(ngModel)]="nouveauRendezvousPatient.date" required>
+      </div>
+      
+      <div class="input-box">
+        <span class="details">Motif</span>
+        <input type="text" id="motif" name="motif" [(ngModel)]="nouveauRendezvousPatient.motif" placeholder="Saisir le motif" required>
+      </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="PRENDRE UN RENDEZ-VOUS">
+      </div>
+    </form>
+    </div>
+    </div>
+  <script src="chemin-vers-votre-script-angular.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<footere></footere>

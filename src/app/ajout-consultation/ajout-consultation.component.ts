@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consultation } from 'src/models/consultation';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
@@ -29,8 +30,8 @@ export class AjoutConsultationComponent {
     groupeSanguin:'',
     motif: '',
     profession: '',
-    medecin_id: {} as Medecin,
-    patient_id: {} as Patient
+    medecin: {} as Medecin,
+    patient: {} as Patient
 
    
   };
@@ -44,7 +45,9 @@ export class AjoutConsultationComponent {
 
   constructor(private consultationService: ConsultationService,
     private patientService: PatientService,
-    private medecinService: MedecinService) { }
+    private medecinService: MedecinService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   
     ngOnInit(): void {
@@ -79,6 +82,7 @@ export class AjoutConsultationComponent {
       {
       next: (nouvelleConsultation: any) => {
         console.log('Consultation ajoutée avec succès', nouvelleConsultation);
+        this.gotoList();
       },
      error: (err: any) => {
         console.error('Erreur lors de l\'ajout de la consultation', err);
@@ -86,5 +90,8 @@ export class AjoutConsultationComponent {
       }
     }
     )
+  }
+  gotoList() {
+    this.router.navigate(['/listeConsultation']);
   }
 }

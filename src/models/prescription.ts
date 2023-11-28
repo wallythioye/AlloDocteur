@@ -5,8 +5,9 @@ export interface Prescription {
   id: number;
   medicament: string;
   description: string;
-  medecin: Medecin;  
-  patient: Patient; 
   date: Date;
+  medecin: Medecin;
+  patient: Patient;
 }
+
 

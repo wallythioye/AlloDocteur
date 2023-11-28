@@ -1,25 +1,38 @@
-
-<div class="container">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Medicament</th>
-            <th>Description</th>
-            <th>Medecin</th>
-            <th>Patient</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let prescription of listePrescription">
-            <td>{{ prescription.id }}</td>
-            <td>{{ prescription.medicament}}</td>
-            <td>{{ prescription.description }}</td>
-            <td>{{ prescription.medecin.prenom }} {{ prescription.medecin.nom }}</td>
-            <td>{{ prescription.patient.prenom }} {{ prescription.patient.nom }}</td>
-            <td>{{ prescription.date}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<menu-medecin></menu-medecin>
+<section class="attendance m-l-60">
+	<div class="attendance-list">
+	  <h1>LISTE DES PRESCRIPTION</h1>
+	  <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Medicament</th>
+        <th>Description</th>
+        <th>Medecin</th>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prescription of listePrescription">
+        <td>{{ prescription.id }}</td>
+        <td>{{ prescription.medicament}}</td>
+        <td>{{ prescription.description }}</td>
+        <td>{{ prescription.medecin.prenom }} {{ prescription.medecin.nom }}</td>
+        <td>{{ prescription.patient.prenom }} {{ prescription.patient.nom }}</td>
+        <td>{{ prescription.date}}</td>
+        <td>
+          <button (click)="editPrescription(prescription.id)" class="modif">
+            Modifier
+          </button>
+          <button (click)="confirmDelete(prescription.id)" class="suppre">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+<footere></footere>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
 import { Prescription } from 'src/models/prescription';
@@ -33,7 +34,8 @@ export class AjoutPrinscriptionComponent {
 
   constructor(private prescriptionService: PrescriptionService,
     private patientService: PatientService,
-    private medecinService: MedecinService) {}
+    private medecinService: MedecinService,private route: ActivatedRoute,
+    private router: Router) {}
 
     ngOnInit(): void {
       this.getPatients();
@@ -63,7 +65,7 @@ export class AjoutPrinscriptionComponent {
       }
   
   refreshPrescriptions(): void {
-    this.prescriptionService.getListePrescription().subscribe(
+    this.prescriptionService.getListPrescriptions().subscribe(
       {
         next: (prescriptions: Prescription[]) => {
           this.prescriptions = prescriptions;
@@ -84,6 +86,7 @@ export class AjoutPrinscriptionComponent {
         next: (nouvellePrescription: any) => {
           this.refreshPrescriptions();
           console.log('Prescription ajoutée avec succès :', nouvellePrescription);
+          this.gotoList();
         },
         error: (err: any) => {
           console.error('Erreur lors de l\'ajout de la prescription :', err);
@@ -91,18 +94,8 @@ export class AjoutPrinscriptionComponent {
       }
     );
   }
-
-  modifierPrescription(prescription: Prescription): void {
-    this.prescriptionService.modifierPrescription(prescription).subscribe(
-      {
-        next: (prescriptionModifie: any) => {
-          this.refreshPrescriptions();
-          console.log('Prescription modifiée avec succès :', prescriptionModifie);
-        },
-        error: (err: any) => {
-          console.error('Erreur lors de la modification de la prescription :', err);
-        }
-      }
-    );
+  gotoList() {
+    this.router.navigate(['/listePrescription']);
   }
+  
 }

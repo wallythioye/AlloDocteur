@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Medecin } from 'src/models/medecin';
+import { Patient } from 'src/models/patient';
 import { RendezVous } from 'src/models/rendezvous';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
 
@@ -7,18 +10,39 @@ import { RendezvousServiceService } from 'src/services/rendezvous-service.servic
   templateUrl: './modifer-rendez-vous.component.html',
   styleUrls: ['./modifer-rendez-vous.component.scss']
 })
-export class ModiferRendezVousComponent {
-  rendezvous: RendezVous[] = [];
+export class ModiferRendezVousComponent implements OnInit {
+ 
+  id!: number;
+  rendezvous: RendezVous ={
+    id: 0,
+    patient: {} as Patient,
+    date: new Date(),
+    dateCreation: new  Date(),
+    motif: '',
+    medecin: {} as Medecin,
+    statut: ''
+  }
+
+  listeRendezvous: RendezVous[] = [];
   errorMessage = "";
   successMessage = "";
 
-  constructor(private rendezvousService: RendezvousServiceService) {}
+  constructor(
+    private rendezvousService: RendezvousServiceService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) {}
+
+    ngOnInit(): void {
+      this.id = +this.route.snapshot.params['id'];
+      this.getListRendezvous();
+    }
 
   refreshRendezvous(): void {
     this.rendezvousService.getListeRendezvous().subscribe(
       {
         next: (rendezvous: RendezVous[]) => {
-          this.rendezvous = rendezvous;
+          this.listeRendezvous = rendezvous;
         },
         error: (err: any) => {
           this.errorMessage = "Erreur de requête";
@@ -29,17 +53,44 @@ export class ModiferRendezVousComponent {
       }
     );
   }
-  modifierRendezvous(rendezvous: RendezVous): void {
-    this.rendezvousService.modifierRendezVous(rendezvous).subscribe(
-      {
-        next: (rendezvousModifie: any) => {
-          this.refreshRendezvous();
-          console.log('Rendez-vous modifié avec succès :', rendezvousModifie);
-        },
-        error: (err: any) => {
-          console.error('Erreur lors de la modification du rendez-vous :', err);
-        }
+
+  getListRendezvous(): void{
+    this.rendezvousService.getListeRendezvous().subscribe(
+      (rendezvouss) => {
+        this.listeRendezvous = rendezvouss;
+
+        this.rendezvous =
+        this.listeRendezvous.find((r) => r.id === this.id) || {
+          id: 0,
+          patient: {} as Patient,
+          date: new Date(),
+          dateCreation: new  Date(),
+          motif: '',
+          medecin: {} as Medecin,
+          statut: ''
+        };
+      },
+      (error) => {
+        console.error('Erreur lors du chargement du liste des rendezvous', error);
       }
     );
+  }
+  
+  updateRendezvous() {
+    this.rendezvousService.modifierRendezVous(this.id, this.rendezvous).subscribe(
+      (data: RendezVous) => {
+        console.log(data);
+        // Mettez à jour la consultation si nécessaire
+        this.gotoList();
+      },
+      (error: any) => console.log(error)
+    );
+  }
+  onSubmit() {
+    this.updateRendezvous();
+  }
+
+  gotoList() {
+    this.router.navigate(['/listeRendezvous']);
   }
 }

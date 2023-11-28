@@ -1,63 +1,107 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consultation } from 'src/models/consultation';
+import { Medecin } from 'src/models/medecin';
+import { Patient } from 'src/models/patient';
 import { ConsultationService } from 'src/services/consultation.service';
 
 @Component({
-  selector: 'app-modifier-consultation',
+  selector: 'modifier-consultation',
   templateUrl: './modifier-consultation.component.html',
   styleUrls: ['./modifier-consultation.component.scss'],
 })
 export class ModifierConsultationComponent implements OnInit {
- @Input() consultation!: Consultation ;
+  id!: number;
+  consultation: Consultation = {
+    id: 0,
+    motif: '',
+    antecedent: '',
+    allergie: '',
+    date: new Date(),
+    groupeSanguin: '',
+    diagnostic: '',
+    poids: 0,
+    taille: 0,
+    profession: '',
+    medecin: {} as Medecin,
+    patient: {} as Patient,
+  };
+
+  listeConsultations: Consultation[] = [];
+
+  errorMessage = '';
+  successMessage = '';
+
   constructor(
     private consultationService: ConsultationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    // Récupérez l'ID de la consultation à partir de la route
-    const consultationId = this.route.snapshot.paramMap.get('id');
+  ngOnInit() {
+    this.id = +this.route.snapshot.params['id'];
+    this.getListeConsultations();
+  }
 
-    if (consultationId) {
-      // Utilisez le service pour obtenir les détails de la consultation
-      this.consultationService.getConsultationById(+consultationId).subscribe(
-        (resultat) => {
-          // Mettez à jour les détails de la consultation dans le composant
-          this.consultation = resultat;
+  refreshConsultations(): void {
+    this.consultationService.getListeConsultations().subscribe(
+      {
+        next: (consultations: Consultation[]) => {
+          this.listeConsultations = consultations;
         },
-        (erreur) => {
-          console.error('Erreur lors de la récupération des détails de la consultation : ', erreur);
-        }
-      );
-    }
+        error: (err: any) => {
+          this.errorMessage = 'Erreur de requête';
+        },
+        complete: () => {
+          this.successMessage = 'Requête valide';
+        },
+      }
+    );
   }
 
-  modifierConsultation() {
-    // Assurez-vous que tous les champs requis sont remplis avant de procéder à la modification
-    if (this.champsSontValides()) {
-      this.consultationService.modifierConsultation(this.consultation)
-        .subscribe(
-          (resultat) => {
-            // Traitement réussi
-            console.log('Consultation modifiée avec succès : ', resultat);
-            // Vous pouvez ajouter ici une redirection ou d'autres actions nécessaires après la modification réussie
-          },
-          (erreur) => {
-            // Gérer l'erreur ici
-            console.error('Erreur lors de la modification de la consultation : ', erreur);
-          }
-        );
-    } else {
-      // Gérer le cas où les champs ne sont pas valides
-      console.error('Veuillez remplir tous les champs obligatoires.');
-    }
+  getListeConsultations(): void {
+    this.consultationService.getListeConsultations().subscribe(
+      (consultations) => {
+        this.listeConsultations = consultations;
+        // Assurez-vous que la consultation actuelle est correctement initialisée
+        this.consultation =
+          this.listeConsultations.find((c) => c.id === this.id) || {
+            id: 0,
+            motif: '',
+            antecedent: '',
+            allergie: '',
+            date: new Date(),
+            groupeSanguin: '',
+            diagnostic: '',
+            poids: 0,
+            taille: 0,
+            profession: '',
+            medecin: {} as Medecin,
+            patient: {} as Patient,
+          };
+      },
+      (error) => {
+        console.error('Erreur lors du chargement de la liste des consultations', error);
+      }
+    );
   }
 
-  private champsSontValides(): boolean {
-    // Ajoutez ici la logique pour vérifier que tous les champs nécessaires sont remplis
-    // Retournez true si tout est valide, sinon false
-    // Par exemple :
-    return !!this.consultation.medecin_id && !!this.consultation.patient_id && !!this.consultation.date;
+  updateConsultation() {
+    this.consultationService.modifierConsultation(this.id, this.consultation)
+    .subscribe((data: Consultation) => {
+        console.log(data);
+        // Mettez à jour la consultation si nécessaire
+        this.gotoList();
+      },
+      (error: any) => console.log(error)
+    );
+  }
+
+  onSubmit() {
+    this.updateConsultation();
+  }
+
+  gotoList() {
+    this.router.navigate(['/listeConsultation']);
   }
 }

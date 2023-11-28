@@ -3,7 +3,7 @@ import { Medecin } from 'src/models/medecin';
 import { MedecinService } from 'src/services/medecin-service.service';
 
 @Component({
-  selector: 'app-liste-medecin',
+  selector: 'liste-medecin',
   templateUrl: './liste-medecin.component.html',
   styleUrls: ['./liste-medecin.component.scss']
 })

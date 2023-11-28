@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
 import { RendezVous } from 'src/models/rendezvous';
@@ -33,7 +34,9 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
   constructor(
     private rendezvousService: RendezvousServiceService,
     private patientService: PatientService,
-    private medecinService: MedecinService
+    private medecinService: MedecinService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
 
@@ -69,11 +72,15 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
         (nouveauRendezvous: RendezVous) => {
           this.refreshRendezvous();
           console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
+          this.gotoList();
         },
         (err: any) => {
           console.error('Erreur lors de l\'ajout du rendez-vous :', err);
         }
       );
+    }
+    gotoList() {
+      this.router.navigate(['/listeRendezvous']);
     }
     
 

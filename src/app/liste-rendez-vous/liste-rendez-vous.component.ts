@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RendezVous } from 'src/models/rendezvous';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
 
@@ -11,10 +12,29 @@ export class ListeRendezVousComponent implements OnInit {
 
   listeRendezVous: RendezVous[] = [];
 
-  constructor(private rendezVousService: RendezvousServiceService) {}
+  errorMessage = '';
+  successMessage = '';
+
+  constructor(private rendezVousService: RendezvousServiceService, private router: Router) {}
 
   ngOnInit(): void {
     this.getListeRendezVous();
+  }
+
+  refreshRendezvous(): void {
+    this.rendezVousService.getListeRendezvous().subscribe(
+      {
+        next: (rendezvous: RendezVous[]) => {
+          this.listeRendezVous = rendezvous;
+        },
+        error: (err: any) => {
+          this.errorMessage = "Erreur de requête";
+        },
+        complete: () => {
+          this.successMessage = "Requête valide";
+        }
+      }
+    );
   }
 
   getListeRendezVous(): void {
@@ -27,4 +47,26 @@ export class ListeRendezVousComponent implements OnInit {
       }
     );
   }
+
+  editRendezvous(rendezvousId: number): void {
+    this.router.navigate(['/modifierRv', rendezvousId]);
+  }
+
+  deleteRendezvous(id: number): void {
+    this.rendezVousService.supprimerRendezvous(id).subscribe(
+      () => {
+        console.log('Suppression réussit. ');
+        this.refreshRendezvous();
+      },
+      error  => {
+          console.log('Erreur lors de la suppression : ', error);
+      }
+    );
+    }
+    confirmDelete(id: number): void{
+      const result = confirm('Êtes-vous sûr de vouloir supprimer cette consultation ?');
+      if(result){
+        this.deleteRendezvous(id);
+      }
+    }
 }
