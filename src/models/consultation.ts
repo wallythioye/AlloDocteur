@@ -14,5 +14,6 @@ export interface Consultation {
     profession: string;
     medecin: Medecin;
     patient: Patient;
+    idPatient: number;
   }
   

@@ -20,6 +20,7 @@ export class ModifierPrescriptionComponent implements OnInit {
     date: new Date() ,
     medecin: {} as Medecin,
     patient: {} as Patient,
+    idPatient: 0
   };
 
   listePrescriptions: Prescription[] = [];
@@ -67,6 +68,7 @@ export class ModifierPrescriptionComponent implements OnInit {
           date: new Date() ,
           medecin: {} as Medecin,
           patient: {} as Patient,
+          idPatient: 0
         };
       },
       (error) => {

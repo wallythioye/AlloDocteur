@@ -15,7 +15,8 @@ export class ModifierPlanningComponent implements OnInit{
       id: 0,
       medecin: {} as Medecin,
       date:new  Date(),
-      disponibilite : 0
+      disponibilite : 0,
+      idMedecin: 0
   }
 
   listePlannings : Planning[] = [];
@@ -61,7 +62,8 @@ export class ModifierPlanningComponent implements OnInit{
           id: 0,
           medecin: {} as Medecin,
           date:new  Date(),
-          disponibilite : 0
+          disponibilite : 0,
+          idMedecin: 0
          };
       },
       (error) => {

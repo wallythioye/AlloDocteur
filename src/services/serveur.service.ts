@@ -11,4 +11,8 @@ export class ServeurService {
   public getFullUrl(): string {
     return this.baseUrl + ":" + this.port + this.apiGlobal;
   }
+  public getLoginUrl(): string{
+    return this.baseUrl + ":" +this.port;
+  }
+
 }

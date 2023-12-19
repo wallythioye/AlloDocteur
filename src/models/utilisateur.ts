@@ -1,13 +1,16 @@
+
 export interface Utilisateur {
-  id:number;
-  prenom: string;
+  id: number;
   nom: string;
+  prenom: string;
   sexe: string;
   age: number;
   adresse: string;
   telephone: string;
-  email: string;
   password: string;
-  profil: string;
-  statut: number;
+  email: string;
+  accountNonExpired: boolean;
+  accountNonLocked: boolean;
+  credentialsNonExpired: boolean;
+  enabled: boolean;
 }

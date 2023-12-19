@@ -15,11 +15,13 @@ export class ModiferRendezVousComponent implements OnInit {
   id!: number;
   rendezvous: RendezVous ={
     id: 0,
-    patient: {} as Patient,
+    idPatient: 0,
+    idMedecin: 0,
     date: new Date(),
     dateCreation: new  Date(),
     motif: '',
     medecin: {} as Medecin,
+    patient: { } as Patient,
     statut: ''
   }
 
@@ -62,11 +64,13 @@ export class ModiferRendezVousComponent implements OnInit {
         this.rendezvous =
         this.listeRendezvous.find((r) => r.id === this.id) || {
           id: 0,
-          patient: {} as Patient,
+          idPatient: 0,
+          idMedecin: 0,
           date: new Date(),
           dateCreation: new  Date(),
           motif: '',
           medecin: {} as Medecin,
+          patient: { } as Patient,
           statut: ''
         };
       },

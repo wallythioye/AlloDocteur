@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consultation } from 'src/models/consultation';
 import { ConsultationService } from 'src/services/consultation.service';
 
@@ -14,10 +14,15 @@ export class ListeConsultationComponent implements OnInit{
   errorMessage = '';
   successMessage = '';
 
-  constructor(private consultationService: ConsultationService, private router: Router) { }
+  constructor(private consultationService: ConsultationService,
+     private router: Router,
+     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getListeConsultations();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+    });
   }
 
     getListeConsultations(): void {
@@ -63,6 +68,7 @@ export class ListeConsultationComponent implements OnInit{
     const result = confirm('Êtes-vous sûr de vouloir supprimer cette consultation ?');
     if(result){
       this.deleteConsultation(id);
+      this.refreshConsultations();
     }
   }
   editConsultation(consultationId: number): void {

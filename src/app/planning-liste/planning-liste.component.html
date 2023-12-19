@@ -1,4 +1,7 @@
 <menu-medecin></menu-medecin>
+<div *ngIf="successMessage">
+  {{ successMessage }}
+</div>
 <section class="attendance m-l-60">
 	<div class="attendance-list">
 	  <h1>LISTE DES PLANNING</h1>
@@ -8,6 +11,7 @@
         <th>ID</th>
         <th>Nom Medecin</th>
         <th>Date</th>
+        <th>Disponibilité</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -16,6 +20,7 @@
           <td>{{ planning.id}}</td>
           <td>{{ planning.medecin.prenom}} {{planning.medecin.nom}}</td>
           <td>{{ planning.date}}</td>
+          <td>{{ planning.disponibilite }}</td>
           <td>
             <button (click)="editPlanning(planning.id)" class="modif">
               Modifier

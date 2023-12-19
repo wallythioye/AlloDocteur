@@ -1,4 +1,8 @@
 <menu-medecin></menu-medecin>
+<body>
+  <div *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
 <section class="attendance m-l-60">
 	<div class="attendance-list">
 	  <h1>LISTE DES RENDEZ-VOUS</h1>
@@ -18,19 +22,26 @@
           <td>{{rendezVous?.patient?.prenom}} {{rendezVous?.patient?.nom}}</td>
           <td>{{ rendezVous.date }}</td>
           <td>{{ rendezVous.motif }}</td>
+
           <td>
-            <button (click)="editRendezvous(rendezVous.id)" class="modif">
-              Modifier
-            </button>
+            <button (click)="editRendezvous(rendezVous.id)" class="modif">Modifier</button>
           </td>
           <td>
-            <button (click)="confirmDelete(rendezVous.id)" class="suppre">
-              Supprimer
+            <button (click)="confirmDelete(rendezVous.id)" class="suppre">Supprimer</button>
+          </td>
+          <td [ngClass]="{'rendezvous-annule': rendezVous.statut === 'annuler'}">
+            <button *ngIf="rendezVous.statut === 'annuler'" type="button" class="btn btn-danger" [disabled]="true" (click)="confirmRendezvous(rendezVous.id)">
+              Deja annulée
+            </button>
+            <button *ngIf="rendezVous.statut === 'confirmer'" type="button" class="annul" (click)="annulerRendezvous(rendezVous.id)">
+              Annuler
             </button>
           </td>
+          
         </tr>
       </tbody>
     </table>
   </div>
   </section>
-  <footere></footere>
+</body>
+<footere></footere>

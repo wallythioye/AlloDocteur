@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';  // Import correct
+
 import { RendezVous } from 'src/models/rendezvous';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
 
@@ -15,11 +16,19 @@ export class ListeRendezVousComponent implements OnInit {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private rendezVousService: RendezvousServiceService, private router: Router) {}
+  constructor(
+    private rendezVousService: RendezvousServiceService,
+    private router: Router,
+    private route: ActivatedRoute 
+  ) {}
 
   ngOnInit(): void {
     this.getListeRendezVous();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+    });
   }
+
 
   refreshRendezvous(): void {
     this.rendezVousService.getListeRendezvous().subscribe(
@@ -44,6 +53,7 @@ export class ListeRendezVousComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erreur lors du chargement de la liste des rendez-vous', error);
+      
       }
     );
   }
@@ -55,18 +65,49 @@ export class ListeRendezVousComponent implements OnInit {
   deleteRendezvous(id: number): void {
     this.rendezVousService.supprimerRendezvous(id).subscribe(
       () => {
-        console.log('Suppression réussit. ');
+        console.log('Suppression réussie. ');
         this.refreshRendezvous();
       },
       error  => {
           console.log('Erreur lors de la suppression : ', error);
       }
     );
+  }
+
+  confirmDelete(id: number): void {
+    const result = confirm('Êtes-vous sûr de vouloir supprimer cette consultation ?');
+    if (result) {
+      this.deleteRendezvous(id);
     }
-    confirmDelete(id: number): void{
-      const result = confirm('Êtes-vous sûr de vouloir supprimer cette consultation ?');
-      if(result){
-        this.deleteRendezvous(id);
-      }
+  }
+
+  confirmRendezvous(id: number): void {
+    const result = confirm('Êtes-vous sûr de vouloir confirmer ce rendez-vous ?');
+    if (result) {
+      this.rendezVousService.confirmerRendezvous(id).subscribe(
+        () => {
+          console.log('Confirmation réussie. ');
+          this.refreshRendezvous();
+        },
+        error => {
+          console.log('Erreur lors de la confirmation : ', error);
+        }
+      );
     }
+  }
+
+  annulerRendezvous(id: number): void {
+    const result = confirm('Êtes-vous sûr de vouloir annuler ce rendez-vous ?');
+    if (result) {
+      this.rendezVousService.annulerRendezvous(id).subscribe(
+        () => {
+          console.log('Annulation réussie. ');
+          this.refreshRendezvous();
+        },
+        error => {
+          console.log('Erreur lors de l\'annulation : ', error);
+        }
+      );
+    }
+  }
 }

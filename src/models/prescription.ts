@@ -8,6 +8,7 @@ export interface Prescription {
   date: Date;
   medecin: Medecin;
   patient: Patient;
+  idPatient: number;
 }
 
 

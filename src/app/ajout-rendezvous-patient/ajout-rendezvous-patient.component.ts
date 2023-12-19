@@ -17,11 +17,13 @@ export class AjoutRendezvousPatientComponent implements OnInit{
 
   nouveauRendezvousPatient: RendezVous = {
     id: 0,
-    patient: {} as Patient,
+    idPatient: 0,
+    idMedecin: 0,
     date: new Date(),
     dateCreation: new  Date(),
     motif: '',
     medecin: {} as Medecin,
+    patient: { } as Patient,
     statut: ''
   };
 
@@ -42,21 +44,10 @@ export class AjoutRendezvousPatientComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getPatients();
     this.getMedecins();
+    this.nouveauRendezvousPatient.date = new Date();
   }
 
-  getPatients(): void {
-    this.patientService.getPatients().subscribe(
-      patients => {
-        console.log(patients);
-        this.patients = patients;
-      },
-      (error: any) => {
-        console.error('Erreur lors de la récupération des patients :', error);
-      }
-    );
-    }
     getMedecins(): void {
       this.medecinService.getMedecins().subscribe(
         (medecins: Medecin[]) => {
@@ -68,15 +59,17 @@ export class AjoutRendezvousPatientComponent implements OnInit{
       );
     }
 
-    ajouterRendezvous(): void {
-      this.rendezvousService.ajouterRendezvous(this.nouveauRendezvousPatient).subscribe(
-        (nouveauRendezvous: RendezVous) => {
-          this.refreshRendezvous();
-          console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
+    prendreRendezvous(): void {
+      this.rendezvousService.prendreRendezvous(this.nouveauRendezvousPatient).subscribe(
+        (rendezVous: RendezVous) => {
+          console.log('Prise de rendez-vous réussie. ', rendezVous);
+          this.successMessage = 'Prise de rendez-vous réussie.';
           this.gotoList();
+          this.refreshRendezvous();
         },
-        (err: any) => {
-          console.error('Erreur lors de l\'ajout du rendez-vous :', err);
+        (error: any) => {
+          console.error('Erreur lors de la prise de rendez-vous : ', error);
+          this.errorMessage = 'Erreur lors de la prise de rendez-vous.';
         }
       );
     }

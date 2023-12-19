@@ -1,63 +1,65 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Planning } from 'src/models/planning';
+import { ConnexionService } from './connexion.service';
 import { ServeurService } from './serveur.service';
-
 @Injectable({
   providedIn: 'root'
 })
 export class PlanningService {
-  private apiUrl = "";
+  private apiUrl = '';
 
-
-  constructor(private httpClient: HttpClient, private datePipe: DatePipe,private serveurService: ServeurService) {
-      this.apiUrl=serveurService.getFullUrl();
-   }
+  constructor(
+    private httpClient: HttpClient,
+    private datePipe: DatePipe,
+    private serveurService: ServeurService,
+    private connexionService: ConnexionService,
+  ) {
+    this.apiUrl = serveurService.getFullUrl();
+  }
 
   getPlanning(): Observable<Planning[]> {
-    return this.httpClient.get<Planning[]>(this.apiUrl+'/plannings');
+    const headers = this.connexionService.getHeadersWithAuthorization();
+
+    return this.httpClient.get<Planning[]>(this.apiUrl + '/plannings', { headers });
   }
 
   ajoutPlanning(nouveauPlanning: Planning): Observable<Planning> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-    return this.httpClient.post<Planning>(this.apiUrl+'/plannings', nouveauPlanning, httpOptions);
+    const headers = this.connexionService.getHeadersWithAuthorization();
+
+    return this.httpClient.post<Planning>(this.apiUrl + '/plannings', nouveauPlanning, { headers });
   }
 
   modifierPlanning(id: number, planning: Planning): Observable<Planning> {
     const formattedDate = this.datePipe.transform(planning.date, 'yyyy-MM-dd');
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
+    const headers = this.connexionService.getHeadersWithAuthorization();
 
     return this.httpClient.put<Planning>(
       `${this.apiUrl}/plannings/${id}`,
       {
         date: formattedDate,
       },
-      httpOptions
+      { headers }
     );
   }
 
   getPlanningById(planningId: number): Observable<Planning> {
-    return this.httpClient.get<Planning>(`${this.apiUrl}/plannings/${planningId}`)
+    const headers = this.connexionService.getHeadersWithAuthorization();
+
+    return this.httpClient.get<Planning>(`${this.apiUrl}/plannings/${planningId}`, { headers });
   }
 
   supprimerPlanning(id: number): Observable<void> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      responseType: 'text' as 'json'  // Indique que la réponse attendue n'est pas du JSON mais une simple réponse textuelle.
-    };
+    const headers = this.connexionService.getHeadersWithAuthorization();
 
-    return this.httpClient.delete<void>(`${this.apiUrl}/plannings/${id}`, httpOptions)
-    .pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.error('Erreur lors de la suppression : ', error);
-        return throwError('Erreur lors de la suppression.');
-      })
-    );
+    return this.httpClient.delete<void>(`${this.apiUrl}/plannings/${id}`, { headers })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Erreur lors de la suppression : ', error);
+          return throwError('Erreur lors de la suppression.');
+        })
+      );
   }
 }

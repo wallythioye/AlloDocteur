@@ -18,20 +18,25 @@
             <i class="bi bi-building-fill"></i>Rendez-vous
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/ajoutrendezvous" routerLinkAction="text-primary">Prendre Rendez-vous</a></li>
-            <li><a class="dropdown-item" routerLink="/listeRendezvous">Mes Rendez-vous</a></li>
+            <li><a class="dropdown-item" routerLink="/prendreRendezvous" routerLinkAction="text-primary">Prendre Rendez-vous</a></li>
+            <li><a class="dropdown-item" routerLink="/listeRendezvousPatient">Mes Rendez-vous</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" routerLink="/listeConsultation">Voir Consultation</a>
+          <a class="nav-link" routerLink="/listeConsultationPatient">Voir Consultation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" routerLink="/listePrescription">Voir Prescription</a>
+          <a class="nav-link" routerLink="/listePrescriptionPatient">Voir Prescription</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listeMedecin">Les Medecin</a>
         </li>
       </ul>
+      
       <form class="d-flex" role="search">
-        <a href="#" class="btn btn-danger m-3">Déconnexion</a>
+        <button class="btn btn-danger m-3" (click)="logout()">Déconnexion</button>
       </form>
     </div>
   </div>

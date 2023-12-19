@@ -1,1 +1,19 @@
 @import "../../assets/scss/styleTable.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+  }
+  body{
+    // height: 100vh;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(113, 183, 230, 0.7), rgba(76, 175, 80, 0.7)), url('/assets/images/s1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }

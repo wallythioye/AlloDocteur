@@ -58,8 +58,8 @@
             <i class="bi bi-building-fill"></i>Patient
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/listePatient" routerLinkAction="text-primary">Mes Patient</a></li>
-            <li><a class="dropdown-item" routerLink="/inscriptionPatient">Ajouter un Patient</a></li>
+            <li><a class="dropdown-item" routerLink="/listePatientMedecin" routerLinkAction="text-primary">Les Patient</a></li>
+            <li><a class="dropdown-item" routerLink="/ajoutPatientMedecin">Ajouter un Patient</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -68,7 +68,7 @@
         </li> -->
       </ul>
       <form class="d-flex" role="search">
-        <a href="#" class="btn btn-danger m-3">Déconnexion</a>
+        <button class="btn btn-danger m-3" (click)="logout()">Déconnexion</button>
       </form>
     </div>
   </div>

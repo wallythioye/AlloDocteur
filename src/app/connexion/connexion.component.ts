@@ -1,63 +1,86 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConnexionService } from 'src/services/connexion.service';
-
+import { JwtService } from 'src/services/jwtService';
 
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.scss']
 })
-export class ConnexionComponent {
-  username: string = '';
-  password: string = '';
-  profil: string ='';
+export class ConnexionComponent{
+  loginForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private connexionService: ConnexionService, private router: Router) {}
+  constructor(private fb: FormBuilder,
+     private connexionService: ConnexionService,
+     private jwtService: JwtService, 
+     private router: Router,
+     private route:  ActivatedRoute
+     ) {
+
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
+  }
 
   login(): void {
-    if (this.username && this.password) {
-      const success = this.connexionService.login(this.username, this.password, this.profil);
-
-      if (success) {
-        this.successMessage = 'Connexion réussie. Redirection en cours...';
-
-        const userType = this.connexionService.getUserType();
-
-        switch (userType) {
-          case 'admin':
-            this.router.navigate(['/admin']);
-            break;
-          case 'patient':
-            this.router.navigate(['/patient']);
-            break;
-          case 'medecin':
-            this.router.navigate(['/medecin']);
-            break;
-          default:
-          
-            this.router.navigate(['/']);
-            break;
-        }
+    console.log('LoginForm:', this.loginForm);
+  
+    if (this.loginForm && this.loginForm.valid) {
+      console.log('LoginForm is valid. Proceeding with login.');
+  
+      const credentials = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      };
+      const email =  this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+  
+      if (credentials.email && credentials.password) {
+        this.connexionService.login(email, password).subscribe(
+          response => {
+            console.log('Login successful:', response);
+            this.successMessage = 'Connexion réussie. Redirection en cours...';
+            localStorage.setItem('token', response.token);
+            
+            const decodedToken = this.jwtService.decodeToken(response.token);
+            this.redirectBasedOnAuthorities(decodedToken.authorities);
+          },
+          error => {
+            console.error('Erreur lors de la connexion:', error);
+            if (error instanceof HttpErrorResponse) {
+              console.log('Status:', error.status);
+              console.log('Message:', error.error.message);
+            }
+            this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
+          }
+        );
       } else {
-        this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
+        console.error('Email or password is null.');
       }
     } else {
-      this.errorMessage = 'Veuillez remplir tous les champs.';
+      console.error('LoginForm is null or not valid.');
     }
   }
-  //infobib
-  //spring scrol
-  //crontab guru
-  logout(): void {
-    this.connexionService.logout();
-    this.successMessage = 'Déconnexion réussie.';
-    this.router.navigate(['/']);
-  }
+  
 
-  isAuthenticated(): boolean {
-    return this.connexionService.isAuthenticated();
+      private redirectBasedOnAuthorities(authorities: string[]): void {
+        if (authorities.includes('ADMIN')) {
+          this.router.navigate(['/acceuilAdmin']);
+        } 
+        else if (authorities.includes('MEDECIN')) {
+          this.router.navigate(['/acceuilMedecin']);
+        } 
+        else if (authorities.includes('PATIENT')) {
+          this.router.navigate(['/acceuilPatient']);
+        } else {
+          console.error('Rôle d\'utilisateur inconnu:', authorities);
+          this.router.navigate(['/']);
+        }
   }
 }

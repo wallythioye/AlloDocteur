@@ -25,6 +25,7 @@ export class ModifierConsultationComponent implements OnInit {
     profession: '',
     medecin: {} as Medecin,
     patient: {} as Patient,
+    idPatient: 0,
   };
 
   listeConsultations: Consultation[] = [];
@@ -78,6 +79,7 @@ export class ModifierConsultationComponent implements OnInit {
             profession: '',
             medecin: {} as Medecin,
             patient: {} as Patient,
+            idPatient: 0,
           };
       },
       (error) => {

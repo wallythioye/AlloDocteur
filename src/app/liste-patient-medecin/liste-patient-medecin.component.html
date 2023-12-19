@@ -1,0 +1,31 @@
+<menu-medecin></menu-medecin>
+<body>
+<section class="attendance m-l-60">
+	<div class="attendance-list">
+	  <h1>LISTE DES PATIENTS</h1>
+	  <table class="table">
+      <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Sexe</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.prenom }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.sexe }}</td>
+          <td>{{ patient.adresse }}</td>
+          <td>{{ patient.telephone }}</td>
+        </tr>
+      </tbody>
+    </table>
+	</div>
+  </section>
+</body>
+  <footere></footere>

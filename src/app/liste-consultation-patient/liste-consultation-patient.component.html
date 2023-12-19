@@ -1,1 +1,40 @@
-<p>liste-consultation-patient works!</p>
+<menu-patient></menu-patient>
+<section class="attendance m-l-60">
+	<div class="attendance-list">
+	  <h1>LISTE DES CONSULTATIONS</h1>
+	  <table class="table">
+      <thead class="thead-dark">
+          <tr>
+            <th>Nom Medecin</th>
+            <th>Nom Patient</th>
+            <th>Date</th>
+            <th>Poids</th>
+            <th>Taille</th>
+            <th>Allergie</th>
+            <th>Antecedant</th>
+            <th>Diacnostique</th>
+            <th>Groupe sanguin</th>
+            <th>Motif</th>
+            <th>Profession</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let consultation of listeConsultations">
+            
+            <td>{{ consultation.medecin.prenom }} {{ consultation.medecin.nom }}</td>
+            <td>{{ consultation.patient.prenom }} {{ consultation.patient.nom }}</td>
+            <td>{{ consultation.date}}</td>
+            <td>{{ consultation.poids }}</td>
+            <td>{{ consultation.taille }}</td>
+            <td>{{ consultation.allergie }}</td>
+            <td>{{ consultation.antecedent }}</td>
+            <td>{{ consultation.diagnostic }}</td>
+            <td>{{ consultation.groupeSanguin }}</td>
+            <td>{{ consultation.motif }}</td>
+            <td>{{ consultation.profession }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+<footere></footere>

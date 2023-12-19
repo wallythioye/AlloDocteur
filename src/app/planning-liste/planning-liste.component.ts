@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Planning } from 'src/models/planning';
 import { PlanningService } from 'src/services/planning.service';
 
@@ -15,10 +15,13 @@ export class PlanningListeComponent implements OnInit{
   errorMessage = '';
   successMessage = '';
 
-  constructor(private planningService : PlanningService, private router : Router){}
+  constructor(private planningService : PlanningService, private router : Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.getPlanning();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+    });
   }
 
   refreshPlannings(): void {

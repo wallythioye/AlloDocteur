@@ -1,34 +1,41 @@
-<menu-medecin></menu-medecin>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES MEDECINS</h1>
-	  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Prénom</th>
-          <th>Nom</th>
-          <th>Âge</th>
-          <th>Sexe</th>
-          <th>Adresse</th>
-          <th>Telephone</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let medecin of medecins">
-          <td>{{ medecin.prenom }}</td>
-          <td>{{ medecin.nom }}</td>
-          <td>{{ medecin.age }}</td>
-          <td>{{ medecin.sexe }}</td>
-          <td>{{ medecin.adresse }}</td>
-          <td>{{ medecin.telephone }}</td>
-          <td>
-            <button class="modif">modifier</button>
-            <button class="suppre">supprimer</button>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-	</div>
+<menu-admin></menu-admin>
+<body>
+  <div *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  <section class="attendance m-l-60">
+    <div class="attendance-list">
+      <h1>LISTE DES MEDECINS</h1>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Sexe</th>
+            <th>Adresse</th>
+            <th>Telephone</th>
+            <th>Spécialite</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medecin of medecins">
+            <td>{{ medecin.prenom }}</td>
+            <td>{{ medecin.nom }}</td>
+            <td>{{ medecin.age }}</td>
+            <td>{{ medecin.sexe }}</td>
+            <td>{{ medecin.adresse }}</td>
+            <td>{{ medecin.telephone }}</td>
+            <td>{{ medecin.specialite}}</td>
+            <td>
+              <button *ngIf="medecin.enabled !== undefined && medecin.enabled" class="suppre" (click)="bloquerUtilisateur(medecin.id)">Bloquer</button>
+              <button *ngIf="medecin.enabled === undefined || !medecin.enabled" class="modif" (click)="debloquerUtilisateur(medecin.id)">Débloquer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
-  <footere></footere>
+</body>
+<footere></footere>

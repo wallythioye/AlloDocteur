@@ -13,7 +13,7 @@
 <div class="container">
   <div class="title">PRENDRE RENDEZ-VOUS</div>
   <div class="content">
-    <form (ngSubmit)="ajouterRendezvous()">
+    <form (ngSubmit)="prendreRendezvous()">
       <div class="user-details">
       <div class="input-box">
         <label for="medecin">Médecin</label>
@@ -23,13 +23,13 @@
         </select>
       </div>
 
-      <div class="input-box">
+      <!-- <div class="input-box">
         <span class="details">Patient</span>
-        <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouveauRendezvousPatient.patient" required >
+        <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouveauRendezvousPatient.idPatient" required >
           <option value="">Sélectionnez un patient</option>
           <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
         </select>
-      </div>
+      </div> -->
       
       <div class="input-box">
         <span class="details">Date</span>

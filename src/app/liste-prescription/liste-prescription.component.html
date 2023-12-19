@@ -1,4 +1,8 @@
 <menu-medecin></menu-medecin>
+<body>
+  <div *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
 <section class="attendance m-l-60">
 	<div class="attendance-list">
 	  <h1>LISTE DES PRESCRIPTION</h1>
@@ -35,4 +39,5 @@
   </table>
 </div>
 </section>
+</body>
 <footere></footere>

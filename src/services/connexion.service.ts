@@ -1,38 +1,52 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Token } from 'src/models/token';
+import { ServeurService } from './serveur.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnexionService {
-  private isLoggedIn: boolean = false;
-  private profil: string = ''; // Ajout de la propriété pour stocker le type d'utilisateur
+  private apiUrl = '';
 
-  constructor() { }
+  constructor(private http: HttpClient, private serveurService: ServeurService) {
+    this.apiUrl = serveurService.getLoginUrl();
+   }
 
-  login(username: string, password: string, profil: string): boolean {
-    // Ajout du paramètre userType pour spécifier le type d'utilisateur lors de la connexion
-    if (username === 'utilisateur' && password === 'motdepasse') {
-      this.isLoggedIn = true;
-      this.profil = profil; // Stockage du type d'utilisateur lors de la connexion réussie
-      return true; // Connexion réussie
-    } else {
-      this.isLoggedIn = false;
-      this.profil = ''; // Réinitialisation du type d'utilisateur en cas d'échec de connexion
-      return false; // Connexion échouée
+   getHeadersWithAuthorization(): HttpHeaders {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      });
     }
+
+    console.error('Token is null. User is not authenticated.');
+    return new HttpHeaders();
   }
 
-  logout(): void {
-    this.isLoggedIn = false;
-    this.profil = ''; // Réinitialisation du type d'utilisateur lors de la déconnexion
-    // Deconnexion
+   login( userEmail: string,  userPassword: string ): Observable<Token> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    //var data = {"email":"\""+email+"\"", "password":"\""+password+"\""};
+    var data = {"email":userEmail, "password":userPassword};
+    return this.http.post<Token>(`${this.apiUrl}/auth/login`, data, { headers });
   }
 
-  isAuthenticated(): boolean {
-    return this.isLoggedIn;
-  }
+  logout(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = this.getHeadersWithAuthorization();
 
-  getUserType(): string {
-    return this.profil;
+    if (token) {
+      return this.http.get<any>(`${this.apiUrl}/auth/logout/${token}`, { headers });
+    } else {
+      console.error('Token is null. User is not authenticated.');
+     
+      return new Observable();
+    }
   }
 }

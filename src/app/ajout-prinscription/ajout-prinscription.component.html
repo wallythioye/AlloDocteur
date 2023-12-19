@@ -12,27 +12,30 @@
 </head>
 <menu-medecin></menu-medecin>
 <body>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
   <div class="container">
     <div class="title">AJOUT PRESCRIPTION</div>
     <div class="content">
-      <form action="#" >
+      <form (ngSubmit)="ajouterPrescription()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nom Médicament</span>
             <input type="text" id="medicament" name="medicament" [(ngModel)]="nouvellePrescription.medicament" placeholder="Saisir le nom du médicament" required>
           </div>
-          <div class="input-box">
+          <!-- <div class="input-box">
             <span class="details">Médecin</span>
             <select id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouvellePrescription.medecin" required>
               <option value="" disabled selected>Sélectionnez un médecin</option>
               <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
             </select>
-          </div>
+          </div> -->
           <div class="input-box">
             <span class="details">Patient</span>
-            <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouvellePrescription.patient" required >
+            <select id="patient" name="patient_id" title="Sélectionner un patient" [(ngModel)]="nouvellePrescription.idPatient" required >
             <option value="" disabled selected>Sélectionnez un patient</option>
-            <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.prenom }} {{ patient.nom }}</option>
+            <option *ngFor="let patient of patients" [ngValue]="patient.id">{{ patient.prenom }} {{ patient.nom }}</option>
           </select>
           </div>
           <div class="input-box">
@@ -45,7 +48,7 @@
           </div>     
         </div>
         <div class="button">
-          <input type="submit" (click)="ajouterPrescription()" value="AJOUTER PRESCRIPTION">
+          <input type="submit" value="AJOUTER PRESCRIPTION">
         </div>
       </form>
       </div>

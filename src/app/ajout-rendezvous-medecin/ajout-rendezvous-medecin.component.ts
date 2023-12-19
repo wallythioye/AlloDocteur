@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
 import { RendezVous } from 'src/models/rendezvous';
-import { Utilisateur } from 'src/models/utilisateur';
 import { MedecinService } from 'src/services/medecin-service.service';
 import { PatientService } from 'src/services/patient-service.service';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
@@ -16,11 +15,14 @@ import { RendezvousServiceService } from 'src/services/rendezvous-service.servic
 export class AjoutRendezvousMedecinComponent implements OnInit {
   nouveauRendezvous: RendezVous = {
     id: 0,
-    patient: {} as Patient,
+    idPatient: 0,
+    idMedecin: 0,
     date: new Date(),
     dateCreation: new  Date(),
     motif: '',
     medecin: {} as Medecin,
+    patient: { } as Patient,
+
     statut: ''
   };
 
@@ -28,8 +30,8 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
   errorMessage = '';
   successMessage ='';
 
-  patients: Utilisateur[] = [];
-  medecins: Utilisateur[] = [];
+  patients: Patient[] = [];
+  medecins: Medecin[] = [];
 
   constructor(
     private rendezvousService: RendezvousServiceService,
@@ -70,18 +72,24 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
     ajouterRendezvous(): void {
       this.rendezvousService.ajouterRendezvous(this.nouveauRendezvous).subscribe(
         (nouveauRendezvous: RendezVous) => {
-          this.refreshRendezvous();
           console.log('Rendez-vous ajouté avec succès :', nouveauRendezvous);
-          this.gotoList();
+          this.refreshRendezvous();
+          this.gotoList('Rendez-vous ajouté avec succès');
         },
         (err: any) => {
           console.error('Erreur lors de l\'ajout du rendez-vous :', err);
+          this.errorMessage = 'Erreur d\'ajout du rendez-vous';
         }
       );
     }
-    gotoList() {
-      this.router.navigate(['/listeRendezvous']);
+    
+    
+    
+    gotoList(successMessage: string): void {
+      this.router.navigate(['/listeRendezvous'], { queryParams: { successMessage } });
     }
+    
+    
     
 
   refreshRendezvous(): void {

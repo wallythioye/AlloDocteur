@@ -1,4 +1,6 @@
 <menu-admin></menu-admin>
+<body>
+  
 <section class="attendance m-l-60">
 	<div class="attendance-list">
 	  <h1>LISTE DES PATIENTS</h1>
@@ -23,12 +25,14 @@
           <td>{{ patient.adresse }}</td>
           <td>{{ patient.telephone }}</td>
           <td>
-              <button class="modif">modifier</button>
-			        <button class="suppre">supprimer</button>
+            <button *ngIf="patient.enabled !== undefined && patient.enabled" class="suppre" (click)="bloquerUtilisateur(patient.id)">Bloquer</button>
+            <button *ngIf="patient.enabled === undefined || !patient.enabled" class="modif" (click)="debloquerUtilisateur(patient.id)">Débloquer</button>
+
           </td>
         </tr>
       </tbody>
     </table>
 	</div>
   </section>
+</body>
   <footere></footere>

@@ -9,6 +9,9 @@
 </head>
 <menu-admin></menu-admin>
 <body>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
   <div class="container">
     <div class="title">AJOUT MEDECIN</div>
     <div class="content">

@@ -26,7 +26,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="/listePatient" routerLinkAction="text-primary">Les Patients</a></li>
-            <li><a class="dropdown-item" routerLink="/inscriptionPatient">Ajouter Un Patient</a></li>
+            <li><a class="dropdown-item" routerLink="/ajoutPatientAdmin">Ajouter Un Patient</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
@@ -43,9 +43,9 @@
         <li class="nav-item">
           <a class="nav-link disabled">Paramétre</a>
         </li>
-      </ul>
+      </ul> 
       <form class="d-flex" role="search">
-        <a href="#" class="btn btn-danger m-3">Déconnexion</a>
+        <button class="btn btn-danger m-3" (click)="logout()">Déconnexion</button>
       </form>
     </div>
   </div>

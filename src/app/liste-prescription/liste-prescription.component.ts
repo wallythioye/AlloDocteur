@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Prescription } from 'src/models/prescription';
 import { PrescriptionService } from 'src/services/prescription.service';
 
@@ -17,10 +17,14 @@ export class ListePrescriptionComponent implements OnInit {
   successMessage = '';
 
   constructor(private prescriptionService: PrescriptionService,
-    private router: Router) {}
+    private router: Router,
+    private route: ActivatedRoute ) {}
 
   ngOnInit(): void {
     this.getListePrescriptions();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+    });
   }
 
   getListePrescriptions(): void {
@@ -66,6 +70,7 @@ export class ListePrescriptionComponent implements OnInit {
     const result = confirm('Êtes-vous sûr de vouloir supprimer cette prescription ?');
     if (result) {
       this.deletePrescription(id);
+      this.refreshPrescriptions();
     }
   }
 
