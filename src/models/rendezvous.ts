@@ -8,8 +8,9 @@ export interface RendezVous {
     statut?: string;
     idPatient: number;
     idMedecin: number;
-    patient:Patient;
+    patient: Patient;
     medecin: Medecin;
     motif: string;
 }
+
 

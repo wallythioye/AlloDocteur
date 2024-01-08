@@ -1,39 +1,51 @@
 <menu-medecin></menu-medecin>
-<div *ngIf="successMessage">
-  {{ successMessage }}
+<body>
+  <div class="container contain">
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-headere"><h2>LISTE DE MON PLANNING </h2></div>
+                  <div class="card-body">
+                      <table class="table table-striped">
+                          <thead>
+                          <tr>
+                            <th>Nom Medecin</th>
+                            <th>Date</th>
+                            <th>Disponibilité</th>
+                            <th>Action</th>
+                          </tr>
+                          </thead>
+                        <tbody>
+                            <tr *ngFor="let planning of plannings">
+                              <td>{{ planning.medecin.prenom}} {{planning.medecin.nom}}</td>
+                              <td>{{ planning.date}}</td>
+                              <td>
+                                <span *ngIf="planning.disponibilite === 1">Disponible</span>
+                                <span *ngIf="planning.disponibilite === 0">Indisponible</span>
+                              </td>
+                              <td>
+                                <button (click)="confirmEdit(planning.id)" class="btn btn-success btn-sm">
+                                  Modifier
+                                </button>
+                              </td>
+                              <td>
+                                <button (click)="confirmDelete(planning.id)" class="btn btn-danger btn-sm">
+                                  Supprimer
+                                </button>
+                              </td>
+                            </tr> 
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES PLANNING</h1>
-	  <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Nom Medecin</th>
-        <th>Date</th>
-        <th>Disponibilité</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-    <tbody>
-        <tr *ngFor="let planning of plannings">
-          <td>{{ planning.id}}</td>
-          <td>{{ planning.medecin.prenom}} {{planning.medecin.nom}}</td>
-          <td>{{ planning.date}}</td>
-          <td>{{ planning.disponibilite }}</td>
-          <td>
-            <button (click)="editPlanning(planning.id)" class="modif">
-              Modifier
-            </button>
-          </td>
-          <td>
-            <button (click)="confirmDelete(planning.id)" class="suppre">
-              Supprimer
-            </button>
-          </td>
-        </tr> 
-    </tbody>
-</table>
-</div>
-</section>
+</body>
 <footere></footere>

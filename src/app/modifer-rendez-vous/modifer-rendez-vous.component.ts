@@ -22,7 +22,7 @@ export class ModiferRendezVousComponent implements OnInit {
     motif: '',
     medecin: {} as Medecin,
     patient: { } as Patient,
-    statut: ''
+    statut: 'confirmer'
   }
 
   listeRendezvous: RendezVous[] = [];

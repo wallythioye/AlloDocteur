@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RendezVous } from 'src/models/rendezvous';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
 
@@ -25,6 +24,7 @@ export class ListeRendezvousPatientComponent implements OnInit {
     this.getListeRendezVous();
     this.route.queryParams.subscribe(params => {
       this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
     });
   }
 
@@ -52,23 +52,33 @@ export class ListeRendezvousPatientComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erreur lors du chargement de la liste des rendez-vous', error);
-      
+        this.errorMessage = 'Erreur lors du chargement de la liste des rendez-vous.'
       }
     );
   }
 
   editRendezvous(rendezvousId: number): void {
-    this.router.navigate(['/modifierRv', rendezvousId]);
+    this.router.navigate(['/modifierRvPatient', rendezvousId]);
+  }
+  
+
+  confirmEdit(id: number): void {
+    const result = confirm('Voulez vous modifier ce rendezvous ?');
+    if (result) {
+      this.editRendezvous(id);
+    }
   }
 
   deleteRendezvous(id: number): void {
     this.rendezVousService.supprimerRendezvous(id).subscribe(
       () => {
-        console.log('Suppression réussie. ');
+        console.log('Suppression du rendz-vous réussie. ');
+        this.successMessage = 'Suppression du rendz-vous réussie.';
         this.refreshRendezvous();
       },
       error  => {
-          console.log('Erreur lors de la suppression : ', error);
+          console.log('Erreur lors de la suppression du rendez-vous : ', error);
+          this.errorMessage = 'Erreur lors de la suppression du rendez-vous.';
       }
     );
   }
@@ -85,11 +95,13 @@ export class ListeRendezvousPatientComponent implements OnInit {
     if (result) {
       this.rendezVousService.confirmerRendezvous(id).subscribe(
         () => {
-          console.log('Confirmation réussie. ');
+          console.log('Confirmation du rendez-vous réussie. ');
+          this.successMessage = 'Confirmation du rendez-vous réussie.';
           this.refreshRendezvous();
         },
         error => {
-          console.log('Erreur lors de la confirmation : ', error);
+          console.log('Erreur lors de la confirmation du rendez-vous : ', error);
+          this.errorMessage = 'Erreur lors de la confirmation du rendez-vous : ';
         }
       );
     }
@@ -100,11 +112,13 @@ export class ListeRendezvousPatientComponent implements OnInit {
     if (result) {
       this.rendezVousService.annulerRendezvous(id).subscribe(
         () => {
-          console.log('Annulation réussie. ');
+          console.log('Rendez-vous annulé avec succés.');
+          this.successMessage = 'Rendez-vous annulé avec succés.';
           this.refreshRendezvous();
         },
         error => {
-          console.log('Erreur lors de l\'annulation : ', error);
+          console.log('Erreur lors de l\'annulation du rendez-vous : ', error);
+          this.errorMessage = 'Erreur lors de l\'annulation du rendez-vous.';
         }
       );
     }

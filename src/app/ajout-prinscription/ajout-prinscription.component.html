@@ -12,11 +12,12 @@
 </head>
 <menu-medecin></menu-medecin>
 <body>
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
+  
   <div class="container">
-    <div class="title">AJOUT PRESCRIPTION</div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <div class="card-headere"><h2>AJOUT PRESCRIPTION</h2></div>
     <div class="content">
       <form (ngSubmit)="ajouterPrescription()">
         <div class="user-details">

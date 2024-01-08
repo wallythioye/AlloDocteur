@@ -1,41 +1,52 @@
 <menu-admin></menu-admin>
 <body>
+<div class="container contain">
   <div *ngIf="successMessage">
     {{ successMessage }}
   </div>
-  <section class="attendance m-l-60">
-    <div class="attendance-list">
-      <h1>LISTE DES MEDECINS</h1>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Âge</th>
-            <th>Sexe</th>
-            <th>Adresse</th>
-            <th>Telephone</th>
-            <th>Spécialite</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let medecin of medecins">
-            <td>{{ medecin.prenom }}</td>
-            <td>{{ medecin.nom }}</td>
-            <td>{{ medecin.age }}</td>
-            <td>{{ medecin.sexe }}</td>
-            <td>{{ medecin.adresse }}</td>
-            <td>{{ medecin.telephone }}</td>
-            <td>{{ medecin.specialite}}</td>
-            <td>
-              <button *ngIf="medecin.enabled !== undefined && medecin.enabled" class="suppre" (click)="bloquerUtilisateur(medecin.id)">Bloquer</button>
-              <button *ngIf="medecin.enabled === undefined || !medecin.enabled" class="modif" (click)="debloquerUtilisateur(medecin.id)">Débloquer</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-headere"><h2>LISTE DES MEDECINS</h2></div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Âge</th>
+                            <th>Sexe</th>
+                            <th>Adresse</th>
+                            <th>Telephone</th>
+                            <th>Spécialite</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let medecin of medecins">
+                            <td>{{ medecin.prenom }}</td>
+                            <td>{{ medecin.nom }}</td>
+                            <td>{{ medecin.age }}</td>
+                            <td>{{ medecin.sexe }}</td>
+                            <td>{{ medecin.adresse }}</td>
+                            <td>{{ medecin.telephone }}</td>
+                            <td>{{ medecin.specialite}}</td>
+                            <td>{{  medecin.email}}</td>
+                            <td>
+                              <td>
+                                <button *ngIf="medecin.enabled !== undefined && medecin.enabled" class="btn btn-danger btn-sm" (click)="confirmBloquer(medecin.id)">Bloquer</button>
+                                <button *ngIf="medecin.enabled === undefined || !medecin.enabled" class="btn btn-success btn-sm" (click)="confirmDebloquer(medecin.id)">Débloquer</button>
+                              </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</div>
 </body>
 <footere></footere>

@@ -14,18 +14,11 @@
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
-  <div class="title">AJOUTER Planning</div>
+  <div class="card-headere"><h2>AJOUTER Planning</h2></div>
   <div class="content">
     <form (ngSubmit)="ajouterPlanning()">
       <div class="user-details">
 
-        <!-- <div class="input-box">
-          <span class="details">Médecin</span>
-          <select id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouveauPlanning.medecin" required>
-            <option value="">Sélectionnez un médecin</option>
-            <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
-          </select>
-        </div> -->
         <div class="input-box">
           <span class="details">Date</span>
           <input type="date" id="date" title="Saisir la date" name="date" [(ngModel)]="nouveauPlanning.date" required>
@@ -69,7 +62,7 @@
     text-align: center;
     background-color: linear-gradient(135deg, #f1f2f3, #4CAF50);
     color: white;
-    padding: 10px; 
-    margin: 0; 
+    padding: 10px;
+    margin: 0;
   }
 </style>

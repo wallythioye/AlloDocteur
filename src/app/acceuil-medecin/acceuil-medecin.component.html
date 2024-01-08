@@ -1,2 +1,223 @@
-<menu-medecin></menu-medecin>
-<footere></footere>
+<!-- <menu-medecin></menu-medecin>
+<body>
+    
+</body>
+<footere></footere> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+</head>
+<body>
+  <section class="header">
+    <div class="logo">
+        <i class="ri-menu-line icon icon-0 menu " (click)="toggleClasses()"></i>
+        <h2>Allo<span>Docteur</span></h2>
+    </div>
+    <div class="search--notification--profile">
+        <div class="search">
+            <input type="text" placeholder="Recherche">
+            <button><i class="ri-search-2-line"></i></button>
+        </div>
+        <div class="notification--profile">
+            <div class="picon lock">
+                <i class="ri-lock-line"></i>
+            </div>
+            <div class="picon bell">
+                <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="picon chat">
+                <i class="ri-wechat-2-line"></i>
+            </div>
+            <div class="picon profile">
+                <img src="assets/images/docteur.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main">
+  <div class="sidebar" [class.active]="sidebarActive">
+      <ul class="sidebar--items">
+          <li>
+              <a href="#" id="active--link">
+                  <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
+                  <span class="sidebar--item">Accueil</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <span class="icon icon-2"><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">Mon Profil</span>
+              </a>
+          </li>
+          <li>
+            <a  (click)="toggleSubMenu('planning')">
+                <span class="icon icon-3"><i class="ri-calendar-2-line"></i></span>
+                <span class="sidebar--item" style="white-space: nowrap;">Planning</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['planning']">
+                <li><a  routerLink="/ajoutPlanning">Ajouter planning</a></li>
+                <li><a routerLink="/listePlanning">Mon planning</a></li>
+            </ul>
+        </li>
+        <li>
+            <a  (click)="toggleSubMenu('rendezvous')">
+                <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                <span class="sidebar--item">Rendez-Vous</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['rendezvous']">
+                <li><a routerLink="/ajoutrvMedecin">Ajouter rendez-vous</a></li>
+                <li><a routerLink="/listeRendezvous">Liste rendez-vous</a></li>
+            </ul>
+        </li>
+        <li>
+            <a  (click)="toggleSubMenu('consultation')">
+                <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                <span class="sidebar--item">Consultation</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['consultation']">
+                <li><a routerLink="/ajoutConsultation">Ajouter consultation</a></li>
+                <li><a routerLink="/listeConsultation">Les consultations</a></li>
+            </ul>
+        </li>
+        <li>
+            <a  (click)="toggleSubMenu('Prescription')">
+                <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                <span class="sidebar--item">Prescription</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['Prescription']">
+                <li><a routerLink="/ajoutPrescription">jouter Prescription</a></li>
+                <li><a routerLink="/listePrescription">mes Prescription</a></li>
+            </ul>
+        </li>
+        <li>
+            <a  (click)="toggleSubMenu('patient')">
+                <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                <span class="sidebar--item">patient</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['patient']">
+                <li><a routerLink="/listePatientMedecin">Les patients</a></li>
+                <li><a routerLink="/ajoutPatientMedecin">ajouter un patient</a></li>
+            </ul>
+        </li>
+      </ul>
+      <ul class="sidebar--bottom-items">
+          <li>
+              <a (click)="logout()">
+                  <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                  <span class="sidebar--item">Deconnecter</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
+                    <div class="dash-widget-info text-right">
+                        <h3>98</h3>
+                        <span class="widget-title1">Doctors <i class="fa fa-check"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg2"><i class="bi bi-person-wheelchair"></i></span>
+                    <div class="dash-widget-info text-right">
+                        <h3>50</h3>
+                        <span class="widget-title2">Patients <i class="fa fa-check"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg3"><i class="fa fa-user-md"></i></span>
+                    <div class="dash-widget-info text-right">
+                        <h3>4</h3>
+                        <span class="widget-title3">Consultation <i class="fa fa-check"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg4"><i class="fa fa-heartbeat"></i></span>
+                    <div class="dash-widget-info text-right">
+                        <h3>30</h3>
+                        <span class="widget-title4">Rendez-Vous <i class="fa fa-check"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container swiper" #swiperContainer>
+    <div class="slide-container">
+        <h1><span>Allo</span>Docteur</h1>
+        <p>avec allodocteur soyer en contact avec vos medecin <span>24h/24 </span>sans deplacement</p>
+      <div class="card-wrapper swiper-wrapper">
+        <div class="card swiper-slide">
+          <div class="image-box">
+            <img src="assets/images/blog/b4.jpg" alt="" />
+          </div>
+          <div class="profile-details">
+            <img src="assets/images/blog/b2.jpg" alt="" />
+            <div class="name-job">
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-box">
+            <img src="assets/images/blog/b2.jpg" alt="" />
+          </div>
+          <div class="profile-details">
+            <img src="assets/images/blog/b4.jpg" alt="" />
+            <div class="name-job">
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-box">
+            <img src="assets/images/blog/b5.jpg" alt="" />
+          </div>
+          <div class="profile-details">
+            <img src="assets/images/blog/b5.jpg" alt="" />
+            <div class="name-job">
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-box">
+            <img src="assets/images/img2.avif" alt="" />
+          </div>
+          <div class="profile-details">
+            <img src="assets/images/blog/b4.jpg" alt="" />
+            <div class="name-job">
+            </div>
+          </div>
+        </div>
+        <div class="card swiper-slide">
+          <div class="image-box">
+            <img src="assets/images/img1.avif" alt="" />
+          </div>
+          <div class="profile-details">
+            <img src="assets/images/blog/b4.jpg" alt="" />
+            <div class="name-job">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+
+<script src="js/swiper-bundle.min.js"></script>

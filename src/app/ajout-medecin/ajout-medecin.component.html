@@ -13,7 +13,10 @@
     {{ errorMessage }}
   </div>
   <div class="container">
-    <div class="title">AJOUT MEDECIN</div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <div class="card-headere"><h2>AJOUT MEDECIN</h2></div>
     <div class="content">
     <form (ngSubmit)="ajouterNouveauMedecin()">
       <div class="user-details">
@@ -61,7 +64,7 @@
       </div>
       </div>
       <div class="button">
-        <input type="submit" (click)="ajouterNouveauMedecin()" value="AJOUTER UN MEDECIN">
+        <input type="submit" value="AJOUTER UN MEDECIN">
       </div>
     </form>
     </div>
@@ -94,7 +97,7 @@
     text-align: center;
     background-color: linear-gradient(135deg, #f1f2f3, #4CAF50);
     color: white;
-    padding: 10px; 
-    margin: 0; 
+    padding: 10px;
+    margin: 0;
   }
 </style>

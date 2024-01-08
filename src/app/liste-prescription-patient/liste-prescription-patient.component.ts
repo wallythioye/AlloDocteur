@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Prescription } from 'src/models/prescription';
 import { PrescriptionService } from 'src/services/prescription.service';
 
@@ -17,10 +17,14 @@ export class ListePrescriptionPatientComponent implements OnInit{
   successMessage = '';
 
   constructor(private prescriptionService: PrescriptionService,
-    private router: Router) {}
+    private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getListePrescriptions();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
+    });
   }
 
   getListePrescriptions(): void {
@@ -30,6 +34,7 @@ export class ListePrescriptionPatientComponent implements OnInit{
       },
       (error) => {
         console.error('Erreur lors du chargement de la liste des prescriptions', error);
+        this.errorMessage = 'Erreur lors du chargement de la liste des prescriptions.';
       }
     );
   }

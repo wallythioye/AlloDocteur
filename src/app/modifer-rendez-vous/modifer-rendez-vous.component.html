@@ -24,6 +24,22 @@
         <span class="details">Motif</span>
         <input type="text" id="motif" name="motif"  placeholder="Saisir le motif" [(ngModel)]="rendezvous.motif" required>
       </div>
+
+      <!-- <div class="input-box">
+        <span class="details">Statut</span>
+        <input type="text" id="statut" name="statut" placeholder="choisir votre statut" [(ngModel)]="rendezvous.statut" required>
+      </div> -->
+
+      <!-- <div class="input-box">
+        <span class="details">Statut</span>
+        <div class="custom-select">
+          <select id="statut" title="Choisir votre statut" name="statut" [(ngModel)]="rendezvous.statut" required>
+            <option value="">-- Choisir votre statut --</option>
+            <option value="confirmer">confirmer</option>
+            <option value="annuler">annuler</option>
+          </select>
+        </div>
+    </div> -->
       </div>
       <div class="button">
         <input type="submit" value="MODIFIER LE RENDEZ-VOUS">

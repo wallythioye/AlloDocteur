@@ -1,40 +1,54 @@
 <menu-patient></menu-patient>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES CONSULTATIONS</h1>
-	  <table class="table">
-      <thead class="thead-dark">
-          <tr>
-            <th>Nom Medecin</th>
-            <th>Nom Patient</th>
-            <th>Date</th>
-            <th>Poids</th>
-            <th>Taille</th>
-            <th>Allergie</th>
-            <th>Antecedant</th>
-            <th>Diacnostique</th>
-            <th>Groupe sanguin</th>
-            <th>Motif</th>
-            <th>Profession</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let consultation of listeConsultations">
-            
-            <td>{{ consultation.medecin.prenom }} {{ consultation.medecin.nom }}</td>
-            <td>{{ consultation.patient.prenom }} {{ consultation.patient.nom }}</td>
-            <td>{{ consultation.date}}</td>
-            <td>{{ consultation.poids }}</td>
-            <td>{{ consultation.taille }}</td>
-            <td>{{ consultation.allergie }}</td>
-            <td>{{ consultation.antecedent }}</td>
-            <td>{{ consultation.diagnostic }}</td>
-            <td>{{ consultation.groupeSanguin }}</td>
-            <td>{{ consultation.motif }}</td>
-            <td>{{ consultation.profession }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<body>
+  <body>
+    <div class="container contain">
+      <div *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-headere"><h2>LISTE DE MES CONSULTATIONS</h2></div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Nom Medecin</th>
+                                <!-- <th>Nom Patient</th> -->
+                                <th>Date</th>
+                                <th>Poids</th>
+                                <th>Taille</th>
+                                <th>Allergie</th>
+                                <th>Antecedant</th>
+                                <th>Diacnostique</th>
+                                <th>Groupe sanguin</th>
+                                <th>Motif</th>
+                                <th>Profession</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let consultation of listeConsultations">
+                                <td>{{ consultation.medecin.prenom }} {{ consultation.medecin.nom }}</td>
+                                <!-- <td>{{ consultation.patient.prenom }} {{ consultation.patient.nom }}</td> -->
+                                <td>{{ consultation.date}}</td>
+                                <td>{{ consultation.poids }}</td>
+                                <td>{{ consultation.taille }}</td>
+                                <td>{{ consultation.allergie }}</td>
+                                <td>{{ consultation.antecedent }}</td>
+                                <td>{{ consultation.diagnostic }}</td>
+                                <td>{{ consultation.groupeSanguin }}</td>
+                                <td>{{ consultation.motif }}</td>
+                                <td>{{ consultation.profession }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </body>
 <footere></footere>

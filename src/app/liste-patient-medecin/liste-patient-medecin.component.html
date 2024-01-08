@@ -1,31 +1,43 @@
 <menu-medecin></menu-medecin>
 <body>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES PATIENTS</h1>
-	  <table class="table">
-      <thead>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Âge</th>
-            <th>Sexe</th>
-            <th>Adresse</th>
-            <th>Téléphone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let patient of patients">
-          <td>{{ patient.prenom }}</td>
-          <td>{{ patient.nom }}</td>
-          <td>{{ patient.age }}</td>
-          <td>{{ patient.sexe }}</td>
-          <td>{{ patient.adresse }}</td>
-          <td>{{ patient.telephone }}</td>
-        </tr>
-      </tbody>
-    </table>
-	</div>
-  </section>
-</body>
-  <footere></footere>
+  <div class="container contain">
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-headere"><h2>LISTE DES PATIENTS</h2></div>
+                  <div class="card-body">
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Âge</th>
+                                <th>Sexe</th>
+                                <th>Adresse</th>
+                                <th>Téléphone</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let patient of patients">
+                              <td>{{ patient.prenom }}</td>
+                              <td>{{ patient.nom }}</td>
+                              <td>{{ patient.age }}</td>
+                              <td>{{ patient.sexe }}</td>
+                              <td>{{ patient.adresse }}</td>
+                              <td>{{ patient.telephone }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+<footere></footere>

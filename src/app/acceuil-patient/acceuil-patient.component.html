@@ -1,2 +1,213 @@
-<menu-patient></menu-patient>
-<footere></footere>
+<!-- <menu-patient></menu-patient>
+<body>
+    
+</body>
+<footere></footere> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <section class="header">
+    <div class="logo">
+        <i class="ri-menu-line icon icon-0 menu " (click)="toggleClasses()"></i>
+        <h2>Allo<span>Docteur</span></h2>
+    </div>
+    <div class="search--notification--profile">
+        <div class="search">
+            <input type="text" placeholder="Recherche">
+            <button><i class="ri-search-2-line"></i></button>
+        </div>
+        <div class="notification--profile">
+            <div class="picon lock">
+                <i class="ri-lock-line"></i>
+            </div>
+            <div class="picon bell">
+                <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="picon chat">
+                <i class="ri-wechat-2-line"></i>
+            </div>
+            <div class="picon profile">
+                <img src="assets/images/docteur.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main">
+  <div class="sidebar" [class.active]="sidebarActive">
+      <ul class="sidebar--items">
+          <li>
+              <a href="#" id="active--link">
+                  <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
+                  <span class="sidebar--item">Accueil</span>
+              </a>
+          </li>
+          <li>
+            <a href="#">
+                <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                <span class="sidebar--item">Mon profile</span>
+            </a>
+        </li>
+          <li>
+            <a  (click)="toggleSubMenu('rendezVous')">
+                <span class="icon icon-2"><i class="ri-calendar-2-line"></i></span>
+                <span class="sidebar--item ">Rendez-vous</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['rendezVous']">
+                <li><a routerLink="/prendreRendezvous">Prendre Rendez-vous</a></li>
+                <li><a routerLink="/listeRendezvousPatient">Mes rendez-vous</a></li>
+            </ul>
+        </li>
+          <li>
+              <a routerLink="/listeConsultationPatient">
+                  <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+                  <span class="sidebar--item" style="white-space: nowrap;">Mes consultations</span>
+              </a>
+          </li>
+          <li>
+              <a routerLink="/listePrescriptionPatient">
+                  <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">Mes Prescription</span>
+              </a>
+          </li>
+          <li>
+              <a routerLink="/listePlanningPatient">
+                  <span class="icon icon-2"><i class="ri-user-2-line"></i></span>
+                  <span class="sidebar--item">Les Planning</span>
+              </a>
+          </li>
+          <li>
+              <a routerLink="/listeMedecinPatient">
+                  <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">Les Médecin</span>
+              </a>
+          </li>
+      </ul>
+      <ul class="sidebar--bottom-items">
+          <li>
+              <a (click)="logout()">
+                  <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                  <span class="sidebar--item">Deconnecter</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+    <!-- slider section -->
+    <section class="slider_section ">
+        <div class="dot_design">
+          <img src="assets/images/dots.png" alt="">
+        </div>
+        <div #carousel id="customCarousel1" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container ">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="detail-box">
+                      <div class="play_btn">
+                        <button>
+                          <i class="bi bi-caret-right-square"></i>
+                          </button>
+                      </div>
+                      <h1>
+                        Allo <br>
+                        <span>
+                          Docteur
+                        </span>
+                      </h1>
+                      <p>
+                        une amélioration de la qualité des soins, une réduction des coûts liés à la
+                         gestion des soins de santé, une plus grande satisfaction des patients.                      
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="assets/images/contact-img.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container ">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <div class="play_btn">
+                        <button>
+                          <i class="fa fa-play" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <h1>
+                        Allo <br>
+                        <span>
+                          Docteur
+                        </span>
+                      </h1>
+                      <p>
+                        La gestion des rendez-vous médicaux présente actuellement 
+                        un certain nombre de défis et de problèmes au sein du système de santé.                      
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="assets/images/slider-img.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container ">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <div class="play_btn">
+                        <button>
+                          <i class="fa fa-play" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <h1>
+                        ALLO <br>
+                        <span>
+                          Docteur
+                        </span>
+                      </h1>
+                      <p>
+                        amoliorer Déplacement des patients pour rechercher un spécialiste pour sa maladie.
+                        Manque de savoir des spécialistes qui sont dans l’hôpital.
+                        Oubli des Rendez-vous Médicaux.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="assets/images/about-img.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel_btn-box">
+            <a class="carousel-control-prev" (click)="prevSlide()">
+              <img src="assets/images/prev.png" alt="">
+              <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" (click)="nextSlide()">
+              <img src="assets/images/next.png" alt="">
+              <span class="sr-only"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+</section>
+</body>
+</html>

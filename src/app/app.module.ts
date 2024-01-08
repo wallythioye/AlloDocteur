@@ -42,6 +42,9 @@ import { ModifierPrescriptionComponent } from './modifier-prescription/modifier-
 import { PlanningListeComponent } from './planning-liste/planning-liste.component';
 import { PlanningMedecinComponent } from './planning-medecin/planning-medecin.component';
 import { ListeRendezvousPatientComponent } from './liste-rendezvous-patient/liste-rendezvous-patient.component';
+import { ListeMedecinPatientComponent } from './liste-medecin-patient/liste-medecin-patient.component';
+import { ListePlanningPatientComponent } from './liste-planning-patient/liste-planning-patient.component';
+import { ModifierRendezvousPatientComponent } from './modifier-rendezvous-patient/modifier-rendezvous-patient.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,10 @@ import { ListeRendezvousPatientComponent } from './liste-rendezvous-patient/list
     AjoutPatientMedecinComponent,
     AjoutPatientAdminComponent,
     ListePatientMedecinComponent,
-    ListeRendezvousPatientComponent
+    ListeRendezvousPatientComponent,
+    ListeMedecinPatientComponent,
+    ListePlanningPatientComponent,
+    ModifierRendezvousPatientComponent
   ],
 
   imports: [

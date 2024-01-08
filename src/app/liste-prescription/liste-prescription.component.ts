@@ -24,6 +24,7 @@ export class ListePrescriptionComponent implements OnInit {
     this.getListePrescriptions();
     this.route.queryParams.subscribe(params => {
       this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
     });
   }
 
@@ -34,6 +35,7 @@ export class ListePrescriptionComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors du chargement de la liste des prescriptions', error);
+        this.errorMessage = 'Erreur lors du chargement de la liste des prescriptions.'
       }
     );
   }
@@ -58,11 +60,12 @@ export class ListePrescriptionComponent implements OnInit {
     this.prescriptionService.supprimerPrescription(id).subscribe(
       () => {
         console.log('Suppression réussie.');
+        this.successMessage = 'Suppression réussie.';
         this.refreshPrescriptions();
       },
       error => {
         console.error('Erreur lors de la suppression de la prescription: ', error);
-        
+        this.errorMessage = 'Erreur lors de la suppression de la prescription.'
       }
     );
   }
@@ -74,7 +77,16 @@ export class ListePrescriptionComponent implements OnInit {
     }
   }
 
+  confirmEdit(id: number): void {
+    const result = confirm('Voulez vous modifier ce prescription ?');
+    if (result) {
+      this.editPrescription(id);
+    }
+  }
+
   editPrescription(prescriptionId: number): void {
     this.router.navigate(['/modifierPrescription', prescriptionId]);
   }
+
+  
 }

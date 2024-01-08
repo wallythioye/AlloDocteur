@@ -24,6 +24,7 @@ export class ListeMedecinComponent implements OnInit {
     this.getMedecins();
     this.route.queryParams.subscribe(params => {
       this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
     });
   }
 
@@ -34,6 +35,7 @@ export class ListeMedecinComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erreur lors de la récupération des médecins :', error);
+        this.errorMessage = 'Erreur lors de la récupération des médecins ';
       }
     );
   }
@@ -56,29 +58,44 @@ export class ListeMedecinComponent implements OnInit {
   bloquerUtilisateur(utilisateurId: number): void {
   this.adminService.bloquerUtilisateur(utilisateurId).subscribe(
     () => {
-      console.log('Utilisateur bloqué avec succès.');
+      console.log('Medecin bloqué avec succès.');
+      this.successMessage = 'Medecin bloqué avec succès.';
       this.refreshMedecin();
     },
     (error) => {
-      console.error('Erreur lors du blocage de l\'utilisateur', error);
+      console.error('Erreur lors du blocage du medecin', error);
+      // this.errorMessage = 'Erreur lors du blocage du medecin';
     }
   );
+}
+
+confirmBloquer(utilisateurId: number): void {
+  const result = confirm('Êtes-vous sûr de vouloir bloquer ce medecin ?');
+  if (result) {
+    this.bloquerUtilisateur(utilisateurId);
+  }
 }
 
 debloquerUtilisateur(utilisateurId: number): void {
   this.adminService.debloquerUtilisateur(utilisateurId).subscribe(
     () => {
-      console.log('Utilisateur débloqué avec succès.');
+      console.log('Medecin débloqué avec succès.');
+      this.successMessage = 'Medecin débloqué avec succès.';
       this.refreshMedecin();
     },
     (error) => {
-      console.error('Erreur lors du déblocage de l\'utilisateur', error);
+      console.error('Erreur lors du déblocage du medecin', error);
+      // this.errorMessage = 'Erreur lors du déblocage du medecin';
     }
   );
 }
 
-
-
+  confirmDebloquer(utilisateurId: number): void {
+    const result = confirm('Voulez vous débloquer ce medecin ?');
+    if (result) {
+      this.debloquerUtilisateur(utilisateurId);
+    }
+}
 
 
 }

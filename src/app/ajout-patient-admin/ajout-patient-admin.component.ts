@@ -35,22 +35,6 @@ export class AjoutPatientAdminComponent {
 
   constructor(private patientService: PatientService, private router: Router) {}
 
-  ajoutPatient(): void {
-    this.patientService.ajouterPatient(this.utilisateur).subscribe(
-      {
-        next: (nouveauPatient) => {
-          this.successMessage = 'Ajout patient reussit pour '+nouveauPatient;
-          this.refreshPatients();
-          this.gotoList();
-          
-        },
-        error: (err) => {
-          this.errorMessage = 'Erreur lors de l\'ajout du patient.';
-        }
-      }
-    );
-  }
-
   refreshPatients(): void {
     this.patientService.getPatients().subscribe(
       (patients: Patient[]) => {
@@ -63,7 +47,24 @@ export class AjoutPatientAdminComponent {
     );
   }
 
-  gotoList() {
-    this.router.navigate(['/listePatient']);
+
+  ajoutPatient(): void {
+    this.patientService.ajouterPatient(this.utilisateur).subscribe(
+      {
+        next: (nouveauPatient) => {
+          console.log('Ajout patient reussit pour ' , nouveauPatient);
+           this.refreshPatients();
+          this.gotoList('Ajout du patient reussit ');
+        },
+        error: (err) => {
+          this.errorMessage = 'Erreur lors de l\'ajout du patient.';
+        }
+      }
+    );
   }
+
+  gotoList(successMessage: string): void {
+    this.router.navigate(['/listePatient'], { queryParams:  { successMessage  } } );
+  }
+  
 }

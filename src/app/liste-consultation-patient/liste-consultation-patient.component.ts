@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Consultation } from 'src/models/consultation';
 import { ConsultationService } from 'src/services/consultation.service';
 
@@ -15,10 +15,14 @@ export class ListeConsultationPatientComponent implements OnInit{
   errorMessage = '';
   successMessage = '';
 
-  constructor(private consultationService: ConsultationService, private router: Router) { }
+  constructor(private consultationService: ConsultationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getListeConsultations();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
+    });
   }
 
     getListeConsultations(): void {
@@ -28,6 +32,7 @@ export class ListeConsultationPatientComponent implements OnInit{
       },
       (error) => {
         console.error('Erreur lors du chargement de la liste des consultations', error);
+        this.errorMessage  = 'Erreur lors du chargement de la liste des consultations';
       }
     );
   }

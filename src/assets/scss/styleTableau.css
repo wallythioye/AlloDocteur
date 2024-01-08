@@ -1,0 +1,74 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+  }
+  body{
+
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(113, 183, 230, 0.7), rgba(76, 175, 80, 0.7)), url('/assets/images/s1.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+  }
+
+  
+.card {
+  box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+  background: #fff;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow: auto;
+}
+.card-headere{
+  background-color: green;
+  text-align: center;
+  color: #dee2e8;
+  
+}
+.contain {
+  margin-left: 100px;
+  border-radius: 10px;
+}
+table {
+  border-collapse: collapse;
+}
+
+table thead tr {
+  background: #e9edf2;
+}
+
+table thead th {
+  padding: 1rem 0rem;
+  text-align: left;
+  color: #444;
+  font-size: .9rem;
+}
+
+table thead th:first-child {
+  padding-left: 1rem;
+}
+
+table tbody td {
+  padding: 1rem 0rem;
+  color: #444;
+}
+
+table tbody td:first-child {
+  padding-left: 1rem;
+  color: var(--main-color);
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dee2e8;
+}

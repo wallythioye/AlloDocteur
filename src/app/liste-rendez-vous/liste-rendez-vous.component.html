@@ -1,47 +1,55 @@
 <menu-medecin></menu-medecin>
 <body>
-  <div *ngIf="successMessage">
-    {{ successMessage }}
+  <div class="container contain">
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-headere"><h2>LISTE DE MES RENDEZ-VOUS</h2></div>
+                  <div class="card-body">
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                <!-- <th>Médecin</th> -->
+                                <th>Patient</th>
+                                <th>Date</th>
+                                <th>Motif</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let rendezVous of listeRendezVous">
+                                <!-- <td>{{ rendezVous?.medecin?.prenom }} {{ rendezVous?.medecin?.nom }}</td> -->
+                                <td>{{rendezVous?.patient?.prenom}} {{rendezVous?.patient?.nom}}</td>
+                                <td>{{ rendezVous.date }}</td>
+                                <td>{{ rendezVous.motif }}</td>
+                                <td>
+                                  <button (click)=" confirmEdit(rendezVous.id)" class="btn btn-success btn-sm">Modifier</button>
+                                </td>
+                                <td>
+                                  <button (click)="confirmDelete(rendezVous.id)" class="btn btn-danger btn-sm">Supprimer</button>
+                                </td>
+                                <td [ngClass]="{'rendezvous-annule': rendezVous.statut === 'annuler'}">
+                                  <button *ngIf="rendezVous.statut === 'annuler'" type="button" class="btn btn-danger btn-sm" [disabled]="true" (click)="confirmRendezvous(rendezVous.id)">
+                                    Deja annulée
+                                  </button>
+                                  <button *ngIf="rendezVous.statut === 'confirmer'" type="button" class="btn btn-warning btn-sm" (click)="annulerRendezvous(rendezVous.id)">
+                                    Annuler
+                                  </button>
+                                </td>
+                                
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                  </div>
+            </div>
+      </div>
   </div>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES RENDEZ-VOUS</h1>
-	  <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Médecin</th>
-          <th>Patient</th>
-          <th>Date</th>
-          <th>Motif</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rendezVous of listeRendezVous">
-          <td>{{ rendezVous?.medecin?.prenom }} {{ rendezVous?.medecin?.nom }}</td>
-          <td>{{rendezVous?.patient?.prenom}} {{rendezVous?.patient?.nom}}</td>
-          <td>{{ rendezVous.date }}</td>
-          <td>{{ rendezVous.motif }}</td>
-
-          <td>
-            <button (click)="editRendezvous(rendezVous.id)" class="modif">Modifier</button>
-          </td>
-          <td>
-            <button (click)="confirmDelete(rendezVous.id)" class="suppre">Supprimer</button>
-          </td>
-          <td [ngClass]="{'rendezvous-annule': rendezVous.statut === 'annuler'}">
-            <button *ngIf="rendezVous.statut === 'annuler'" type="button" class="btn btn-danger" [disabled]="true" (click)="confirmRendezvous(rendezVous.id)">
-              Deja annulée
-            </button>
-            <button *ngIf="rendezVous.statut === 'confirmer'" type="button" class="annul" (click)="annulerRendezvous(rendezVous.id)">
-              Annuler
-            </button>
-          </td>
-          
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </section>
 </body>
 <footere></footere>

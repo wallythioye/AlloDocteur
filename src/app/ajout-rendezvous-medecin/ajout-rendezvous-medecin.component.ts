@@ -22,7 +22,6 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
     motif: '',
     medecin: {} as Medecin,
     patient: { } as Patient,
-
     statut: ''
   };
 
@@ -59,6 +58,7 @@ export class AjoutRendezvousMedecinComponent implements OnInit {
       }
     );
     }
+    
     getMedecins(): void {
       this.medecinService.getMedecins().subscribe(
         (medecins: Medecin[]) => {

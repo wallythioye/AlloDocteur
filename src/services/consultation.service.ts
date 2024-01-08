@@ -28,7 +28,7 @@ export class ConsultationService {
     
     const headers = this.connexionService.getHeadersWithAuthorization();
   
-      return this.httpClient.post<Consultation>(this.apiUrl + '/consultations', nouvelleConsultation, {headers});
+      return this.httpClient.post<Consultation>(this.apiUrl+'/consultations',nouvelleConsultation, {headers});
     
   }
 

@@ -10,22 +10,15 @@
 </head>
 <menu-medecin></menu-medecin>
 <body>
+  
+<div class="container">
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
-  
-<div class="container">
-  <div class="title">AJOUTER RENDEZ-VOUS</div>
+  <div class="card-headere"><h2>AJOUTER RENDEZ-VOUS</h2></div>
   <div class="content">
     <form (ngSubmit)="ajouterRendezvous()">
       <div class="user-details">
-      <!-- <div class="input-box">
-        <label for="medecin">Médecin</label>
-        <select id="medecin" name="medecin_id" title="Sélectionner un médecin" [(ngModel)]="nouveauRendezvous.medecin" required>
-          <option value="">Sélectionnez un médecin</option>
-          <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
-        </select>
-      </div> -->
 
       <div class="input-box">
         <span class="details">Patient</span>

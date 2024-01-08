@@ -58,7 +58,6 @@ export class AjoutConsultationComponent implements OnInit {
     getPatients(): void {
       this.patientService.getPatients().subscribe(
         patients => {
-          console.log(patients);
           this.patients = patients;
         },
         (error: any) => {
@@ -104,7 +103,7 @@ export class AjoutConsultationComponent implements OnInit {
           (err: any) => {
             console.error('Erreur lors de l\'ajout de la consultation', err);
             this.errorMessage = 'Erreur lors de l\'ajout de la consultation';
-           
+            this.gotoList('');
           }
         );
       }

@@ -98,12 +98,13 @@ getListeRendezvous(): Observable<RendezVous[]> {
       );
   }
 
+
   prendreRendezvous(rendezvous: RendezVous): Observable<RendezVous> {
 
     const headers = this.connexionService.getHeadersWithAuthorization();
     
-    return this.__httpClient.post<RendezVous>(this.apiUrl + '/rendezvous/prendreRv', rendezvous, { headers })
-
+    return this.__httpClient.post<RendezVous>(this.apiUrl + '/rendezvous/prendreRv',  rendezvous , { headers });
 }
 
 }
+

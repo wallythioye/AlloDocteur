@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/models/medecin';
 import { Patient } from 'src/models/patient';
 import { RendezVous } from 'src/models/rendezvous';
-import { Utilisateur } from 'src/models/utilisateur';
 import { MedecinService } from 'src/services/medecin-service.service';
 import { PatientService } from 'src/services/patient-service.service';
 import { RendezvousServiceService } from 'src/services/rendezvous-service.service';
@@ -31,8 +30,8 @@ export class AjoutRendezvousPatientComponent implements OnInit{
   errorMessage = '';
   successMessage ='';
 
-  patients: Utilisateur[] = [];
-  medecins: Utilisateur[] = [];
+  patients: Patient[] = [];
+  medecins: Medecin[] = [];
 
   constructor(
     private rendezvousService: RendezvousServiceService,
@@ -55,6 +54,7 @@ export class AjoutRendezvousPatientComponent implements OnInit{
         },
         (error: any) => {
           console.error('Erreur lors de la récupération des médecins :', error);
+
         }
       );
     }
@@ -64,12 +64,12 @@ export class AjoutRendezvousPatientComponent implements OnInit{
         (rendezVous: RendezVous) => {
           console.log('Prise de rendez-vous réussie. ', rendezVous);
           this.successMessage = 'Prise de rendez-vous réussie.';
-          this.gotoList();
+          this.gotoList('Prise de rendez-vous réussie.');
           this.refreshRendezvous();
         },
         (error: any) => {
           console.error('Erreur lors de la prise de rendez-vous : ', error);
-          this.errorMessage = 'Erreur lors de la prise de rendez-vous.';
+          // this.errorMessage = 'Erreur lors de la prise de rendez-vous.';
         }
       );
     }
@@ -85,7 +85,7 @@ export class AjoutRendezvousPatientComponent implements OnInit{
         }
       );
     }
-    gotoList() {
-      this.router.navigate(['/listeRendezvous']);
+    gotoList(successMessage: string): void {
+      this.router.navigate(['/listeRendezvousPatient'], { queryParams: { successMessage } });
     }
 }

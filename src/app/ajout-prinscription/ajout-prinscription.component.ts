@@ -78,6 +78,7 @@ export class AjoutPrinscriptionComponent implements OnInit{
       (err: any) => {
         console.error('Erreur lors de l\'ajout de la prescription :', err);
         this.errorMessage = 'Erreur lors de l\'ajout de la prescription';
+        this.gotoList('');
       }
     );
   }

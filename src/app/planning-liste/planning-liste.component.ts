@@ -21,6 +21,7 @@ export class PlanningListeComponent implements OnInit{
     this.getPlanning();
     this.route.queryParams.subscribe(params => {
       this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
     });
   }
 
@@ -47,6 +48,7 @@ export class PlanningListeComponent implements OnInit{
       },
       (error: any) => {
         console.error('Erreur lors de la récupération des planning :', error);
+        this.errorMessage = 'Erreur lors de la récupération des planning.';
       }
     );
   }
@@ -54,16 +56,23 @@ export class PlanningListeComponent implements OnInit{
   editPlanning(planningId: number): void {
     this.router.navigate(['/modifierPlanning', planningId]);
   }
+  confirmEdit(id: number): void {
+    const result = confirm('Voulez vous modifier ce planning ?');
+    if (result) {
+      this.editPlanning(id);
+    }
+  }
 
   deletePlanning(id: number): void{
     this.planningService.supprimerPlanning(id).subscribe(
       () => {
-        console.log('Suppression réussie.');
+        console.log('Suppression du planning réussie.');
+        this.successMessage = 'Suppression du planning réussie.';
         this.refreshPlannings();
       },
       error => {
         console.error('Erreur lors de la suppression du planning: ', error);
-        
+        this.errorMessage = 'Erreur lors de la suppression du planning';
       }
     );
   }

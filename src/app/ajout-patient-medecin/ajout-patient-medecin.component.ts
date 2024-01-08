@@ -41,7 +41,7 @@ export class AjoutPatientMedecinComponent {
         next: (nouveauPatient) => {
           this.successMessage = 'Ajout patient reussit pour '+nouveauPatient;
           this.refreshPatients();
-          this.gotoList();
+          this.gotoList('Ajout du patient reussit');
           
         },
         error: (err) => {
@@ -63,7 +63,7 @@ export class AjoutPatientMedecinComponent {
     );
   }
 
-  gotoList() {
-    this.router.navigate(['/listePatient']);
+  gotoList(successMessage: string): void {
+    this.router.navigate(['/listePatient'], { queryParams:  { successMessage  } });
   }
 }

@@ -12,7 +12,10 @@
 <menu></menu>
 <body ng-controller="PatientController">
   <div class="container">
-    <div class="title">INSCRIPTION PATIENT</div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <div class="card-headere"><h2>INSCRIPTION PATIENT</h2></div>
     <div class="content">
       <form action="#" (ngSubmit)="inscrirePatient()">
         <div class="user-details">

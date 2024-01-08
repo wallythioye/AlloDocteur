@@ -1,1 +1,41 @@
-<p>liste-planning-patient works!</p>
+<menu-patient></menu-patient>
+<body>
+  <div class="container contain">
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-headere"><h2>LISTE DES PLANNING</h2></div>
+                  <div class="card-body">
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Nom Medecin</th>
+                              <th>Date</th>
+                              <th>Disponibilité</th>
+                              <!-- <th>Action</th> -->
+                            </tr>
+                            </thead>
+                          <tbody>
+                              <tr *ngFor="let planning of plannings">
+                                <td>{{ planning.medecin.prenom}} {{planning.medecin.nom}}</td>
+                                <td>{{ planning.date}}</td>
+                                <td>
+                                  <span *ngIf="planning.disponibilite === 1">Disponible</span>
+                                  <span *ngIf="planning.disponibilite === 0">Indisponible</span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
+<footere></footere>

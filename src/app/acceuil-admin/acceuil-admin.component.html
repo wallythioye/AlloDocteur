@@ -1,2 +1,120 @@
-<menu-admin></menu-admin>
-<footere></footere>
+<!-- <menu-admin></menu-admin>
+<body>
+    
+</body>
+<footere></footere> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <section class="header">
+    <div class="logo">
+        <i class="ri-menu-line icon icon-0 menu " (click)="toggleClasses()"></i>
+        <h2>Allo<span>Docteur</span></h2>
+    </div>
+    <div class="search--notification--profile">
+        <div class="search">
+            <input type="text" placeholder="Recherche">
+            <button><i class="ri-search-2-line"></i></button>
+        </div>
+        <div class="notification--profile">
+            <div class="picon lock">
+                <i class="ri-lock-line"></i>
+            </div>
+            <div class="picon bell">
+                <i class="ri-notification-2-line"></i>
+            </div>
+            <div class="picon chat">
+                <i class="ri-wechat-2-line"></i>
+            </div>
+            <div class="picon profile">
+                <img src="assets/images/docteur.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main">
+  <div class="sidebar" [class.active]="sidebarActive">
+      <ul class="sidebar--items">
+          <li>
+              <a href="#" id="active--link">
+                  <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
+                  <span class="sidebar--item">Accueil</span>
+              </a>
+          </li>
+          <!-- <li>
+            <a  (click)="toggleSubMenu('rendezVous')">
+                <span class="icon icon-2"><i class="ri-user-2-line"></i></span>
+                <span class="sidebar--item">specialistes</span><i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['rendezVous']">
+                <li><a href="#">les Specialistes</a></li>
+                <li><a href="#">ajouter un Specialiste</a></li>
+            </ul>
+        </li> -->
+        <li>
+            <a (click)="toggleSubMenu('patients')">
+                <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+                <span class="sidebar--item" style="white-space: nowrap;">Patients</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['patients']">
+                <li><a routerLink="/listePatient">Liste patients</a></li>
+                <li><a routerLink="/ajoutPatientAdmin">Nouveau patient</a></li>
+            </ul>
+        </li>
+        <li>
+            <a (click)="toggleSubMenu('specialistes')">
+                <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+                <span class="sidebar--item" style="white-space: nowrap;">Médecin</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="submenu" *ngIf="subMenus['specialistes']">
+                <li><a routerLink="/listePatient">Liste Médecin</a></li>
+                <li><a routerLink="/ajoutPatientAdmin">Nouveau Médecin</a></li>
+            </ul>
+        </li>
+      </ul>
+      <ul class="sidebar--bottom-items">
+          <li>
+              <a>
+                  <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                  <span class="sidebar--item">Parametre</span>
+              </a>
+          </li>
+          <li>
+              <a (click)="logout()">
+                  <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                  <span class="sidebar--item">Deconnecter</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Avec AlloDcoteur</h1>
+          <h2 data-aos="fade-up" data-aos-delay="200">Amélioration de la Gestion des Rendez-vous :
+            Simplifier le processus de prise de rendez-vous en ligne pour les patients tout en permettant
+            aux professionnels de la santé de mieux organiser leurs plannings
+         Des rappels de rendez-vous et de médicaments seront envoyés automatiquement aux patients via e-mail,
+         SMS ou notifications mobiles.</h2>
+          <div data-aos="fade-up" data-aos-delay="800">
+            <a href="#about" class="btn-get-started scrollto">Retour accueil</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="assets/images/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero --> 
+</section>
+</body>
+</html>

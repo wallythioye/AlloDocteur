@@ -22,6 +22,7 @@ export class ListeConsultationComponent implements OnInit{
     this.getListeConsultations();
     this.route.queryParams.subscribe(params => {
       this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
     });
   }
 
@@ -32,6 +33,7 @@ export class ListeConsultationComponent implements OnInit{
       },
       (error) => {
         console.error('Erreur lors du chargement de la liste des consultations', error);
+        this.errorMessage ='Erreur lors du chargement de la liste des consultations';
       }
     );
   }
@@ -56,10 +58,12 @@ export class ListeConsultationComponent implements OnInit{
     this.consultationService.supprimerConsultation(id).subscribe(
       () => {
         console.log('Suppression réussit. ');
+        this.errorMessage = 'Suppression réussit.';
         this.refreshConsultations();
       },
       error  => {
         console.log('Erreur lors de la suppression : ', error);
+        this.errorMessage = 'Erreur lors de la suppression';
       }
     );
   }
@@ -75,4 +79,11 @@ export class ListeConsultationComponent implements OnInit{
     this.router.navigate(['/modifierConsultation', consultationId]);
   }
 
+
+  confirmEdit(id: number): void {
+    const result = confirm('Voulez vous modifier ce consultation ?');
+    if (result) {
+      this.editConsultation(id);
+    }
+  }
 }

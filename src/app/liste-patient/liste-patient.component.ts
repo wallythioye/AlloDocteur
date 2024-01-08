@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Patient } from 'src/models/patient';
-import { Utilisateur } from 'src/models/utilisateur';
 import { AdminServiceService } from 'src/services/admin-service.service';
 import { PatientService } from 'src/services/patient-service.service';
 
@@ -16,10 +16,14 @@ export class ListePatientComponent implements OnInit {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private patientService: PatientService, private adminService: AdminServiceService) {}
+  constructor(private patientService: PatientService, private adminService: AdminServiceService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getPatients();
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['successMessage'];
+      this.errorMessage = params['errorMessage'];
+    });
   }
 
   getPatients(): void {
@@ -29,6 +33,7 @@ export class ListePatientComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erreur lors de la récupération des patients :', error);
+        this.errorMessage = 'Erreur lors de la récupération des patients.';
       }
     );
   }
@@ -52,25 +57,43 @@ export class ListePatientComponent implements OnInit {
   bloquerUtilisateur(utilisateurId: number): void {
     this.adminService.bloquerUtilisateur(utilisateurId).subscribe(
       () => {
-        console.log('Utilisateur bloqué avec succès.');
+        console.log('Patient bloqué avec succès.');
+        this.successMessage = 'Patient bloqué avec succès.';
         this.refreshPatient();
       },
       (error) => {
-        console.error('Erreur lors du blocage de l\'utilisateur', error);
+        console.error('Erreur lors du blocage du patient', error);
+        // this.errorMessage = 'Erreur lors du blocage du patient.';
       }
     );
+  }
+
+  confirmBloquer(utilisateurId: number): void {
+    const result = confirm('Êtes-vous sûr de vouloir bloquer ce patient ?');
+    if (result) {
+      this.bloquerUtilisateur(utilisateurId);
+    }
   }
   
   debloquerUtilisateur(utilisateurId: number): void {
     this.adminService.debloquerUtilisateur(utilisateurId).subscribe(
       () => {
-        console.log('Utilisateur débloqué avec succès.');
+        console.log('Patient débloqué avec succès.');
+        this.successMessage = 'Patient débloqué avec succès.';
         this.refreshPatient();
       },
       (error) => {
-        console.error('Erreur lors du déblocage de l\'utilisateur', error);
+        console.error('Erreur lors du déblocage du patient', error);
+        // this.errorMessage = 'Erreur lors du déblocage du patient';
       }
     );
+  }
+
+  confirmDebloquer(utilisateurId: number): void {
+    const result = confirm('Voulez vous débloquer ce patient ?');
+    if (result) {
+      this.debloquerUtilisateur(utilisateurId);
+    }
   }
   
 }

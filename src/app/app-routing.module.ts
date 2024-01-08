@@ -35,6 +35,9 @@ import { AjoutPatientMedecinComponent } from './ajout-patient-medecin/ajout-pati
 import { AjoutPatientAdminComponent } from './ajout-patient-admin/ajout-patient-admin.component';
 import { ListePatientMedecinComponent } from './liste-patient-medecin/liste-patient-medecin.component';
 import { ListeRendezvousPatientComponent } from './liste-rendezvous-patient/liste-rendezvous-patient.component';
+import { ListeMedecinPatientComponent } from './liste-medecin-patient/liste-medecin-patient.component';
+import { ListePlanningPatientComponent } from './liste-planning-patient/liste-planning-patient.component';
+import { ModifierRendezvousPatientComponent } from './modifier-rendezvous-patient/modifier-rendezvous-patient.component';
 
 const routes: Routes = [
   {path:"", component:AcceuilComponent},
@@ -52,7 +55,9 @@ const routes: Routes = [
   {path:"ajoutrvMedecin", component:AjoutRendezvousMedecinComponent},
   {path:"ajoutPlanning", component:PlanningMedecinComponent},
   {path:"listePlanning", component:PlanningListeComponent},
+  {path:"listePlanningPatient", component:ListePlanningPatientComponent},
   {path:"listeMedecin", component:ListeMedecinComponent},
+  {path:"listeMedecinPatient", component:ListeMedecinPatientComponent},
   {path:"listePatient", component:ListePatientComponent},
   {path:"listePatientMedecin", component:ListePatientMedecinComponent},
   {path:"modifierRv/:id", component:ModiferRendezVousComponent},
@@ -70,7 +75,8 @@ const routes: Routes = [
   {path:"listePrescriptionPatient", component:ListePrescriptionPatientComponent},
   {path:"listeConsultationPatient", component:ListeConsultationPatientComponent},
   {path:"ajoutPatientMedecin", component:AjoutPatientMedecinComponent},
-  {path:"ajoutPatientAdmin", component:AjoutPatientAdminComponent}
+  {path:"ajoutPatientAdmin", component:AjoutPatientAdminComponent},
+  {path:"modifierRvPatient/:id", component:ModifierRendezvousPatientComponent}
 ];
 
 @NgModule({

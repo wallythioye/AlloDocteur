@@ -1,30 +1,43 @@
 <menu-patient></menu-patient>
-<section class="attendance m-l-60">
-	<div class="attendance-list">
-	  <h1>LISTE DES PRESCRIPTION</h1>
-	  <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Medicament</th>
-        <th>Description</th>
-        <th>Medecin</th>
-        <th>Patient</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prescription of listePrescription">
-        <td>{{ prescription.id }}</td>
-        <td>{{ prescription.medicament}}</td>
-        <td>{{ prescription.description }}</td>
-        <td>{{ prescription.medecin.prenom }} {{ prescription.medecin.nom }}</td>
-        <td>{{ prescription.patient.prenom }} {{ prescription.patient.nom }}</td>
-        <td>{{ prescription.date}}</td>
-        
-      </tr>
-    </tbody>
-  </table>
-</div>
-</section>
+<body>
+  <div class="container contain">
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-headere"><h2>LISTE DE MES PRESCRIPTIONS</h2></div>
+                  <div class="card-body">
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                <!-- <th>ID</th> -->
+                                <th>Medicament</th>
+                                <th>Description</th>
+                                <th>Medecin</th>
+                                <th>Patient</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let prescription of listePrescription">
+                                <!-- <td>{{ prescription.id }}</td> -->
+                                <td>{{ prescription.medicament}}</td>
+                                <td>{{ prescription.description }}</td>
+                                <td>{{ prescription.medecin.prenom }} {{ prescription.medecin.nom }}</td>
+                                <td>{{ prescription.patient.prenom }} {{ prescription.patient.nom }}</td>
+                                <td>{{ prescription.date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
 <footere></footere>

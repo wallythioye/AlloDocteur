@@ -1,0 +1,48 @@
+<menu-patient></menu-patient>
+<body>
+<div class="container contain">
+    <div *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-headere"><h2>LISTE DES MEDECINS</h2></div>
+
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Âge</th>
+                                <th>Sexe</th>
+                                <th>Adresse</th>
+                                <th>Telephone</th>
+                                <th>Spécialite</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let medecin of medecins">
+                                <td>{{ medecin.prenom }}</td>
+                                <td>{{ medecin.nom }}</td>
+                                <td>{{ medecin.age }}</td>
+                                <td>{{ medecin.sexe }}</td>
+                                <td>{{ medecin.adresse }}</td>
+                                <td>{{ medecin.telephone }}</td>
+                                <td>{{ medecin.specialite}}</td>
+                                <td>{{ medecin.email }}</td>
+                              </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footere></footere>

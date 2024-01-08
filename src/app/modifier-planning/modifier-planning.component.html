@@ -20,7 +20,10 @@
           <span class="details">Date</span>
           <input type="date" id="date" title="Saisir la date" name="date" [(ngModel)]="planning.date" required>
         </div>
-        
+        <div class="input-box">
+          <span class="details">Disponibilite</span>
+          <input type="number" id="disponibilite" title="Saisir la disponibilite" name="disponibilite" [(ngModel)]="planning.disponibilite" required>
+        </div>
       </div>
       <div class="button">
         <input type="submit" value="MODIFIER LE RENDEZ-VOUS">

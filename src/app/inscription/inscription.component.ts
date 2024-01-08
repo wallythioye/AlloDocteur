@@ -39,7 +39,7 @@ export class InscriptionComponent {
       {
         next: (nouveauPatient) => {
           this.successMessage = 'Inscription réussie pour '+nouveauPatient;
-          this.gotoConnexion();
+          this.gotoConnexion('Inscription réussie , vous pouvez connecter maintenant !');
         },
         error: (err) => {
           this.errorMessage = 'Erreur lors de l\'inscription du patient.';
@@ -48,7 +48,7 @@ export class InscriptionComponent {
     );
   }
 
-  gotoConnexion() {
-    this.router.navigate(['/connexion']);
+  gotoConnexion(successMessage: string): void {
+    this.router.navigate(['/connexion'], { queryParams: { successMessage } });
   }
 }

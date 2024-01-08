@@ -25,6 +25,12 @@ export class PlanningService {
 
     return this.httpClient.get<Planning[]>(this.apiUrl + '/plannings', { headers });
   }
+  
+  getPlanningPatient(): Observable<Planning[]> {
+    const headers = this.connexionService.getHeadersWithAuthorization();
+
+    return this.httpClient.get<Planning[]>(this.apiUrl + '/plannings/planningPatient', { headers });
+  }
 
   ajoutPlanning(nouveauPlanning: Planning): Observable<Planning> {
     const headers = this.connexionService.getHeadersWithAuthorization();
