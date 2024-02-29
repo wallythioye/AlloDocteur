@@ -31,7 +31,7 @@ export class ConnexionService {
    login( userEmail: string,  userPassword: string ): Observable<Token> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
-    });
+    });  
     //var data = {"email":"\""+email+"\"", "password":"\""+password+"\""};
     var data = {"email":userEmail, "password":userPassword};
     return this.http.post<Token>(`${this.apiUrl}/auth/login`, data, { headers });
